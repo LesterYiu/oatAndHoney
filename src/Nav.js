@@ -4,10 +4,10 @@ const Nav = () => {
     return(
         <nav>
             <div className="wrapper">
-                <ul>
+                <ul className="flex-container">
                     <li>
-                        <div className="image-container">
-
+                        <div className="logo-container">
+                            <img src={logo} alt="Oat & Honey company logo" />
                         </div>
                     </li>
                     <li></li>

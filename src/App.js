@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import Header from './Header';
 import Nav from './Nav';
+import Gallery from './Gallery';
 
 /*
 ** In App Component **
@@ -51,25 +52,25 @@ function App() {
 
   const [productCollection, setProductCollection] = useState([]);
 
-  // useEffect(() => {
-  //   axios({
-  //     url: 'https://shrouded-bayou-34065.herokuapp.com/https://openapi.etsy.com/v2/shops/18372328/listings/aactive/',
-  //     dataResponse: 'json',
-  //     method: 'GET',
-  //     params: {
-  //       api_key: 'l227pbb94xqk5gj4mfg9ayva',
-  //       includes: 'Images, Shop'
-  //     }
-  //   }).then( (apiData) => {
-  //     console.log(apiData.data.results);
-  //     setProductCollection(apiData.data.results);
-  //   });
-  // }, [])
+  useEffect(() => {
+    axios({
+      url: 'https://powerful-peak-98750.herokuapp.com/https://openapi.etsy.com/v2/shops/18372328/listings/active/',
+      dataResponse: 'json',
+      method: 'GET',
+      params: {
+        api_key: 'l227pbb94xqk5gj4mfg9ayva',
+        includes: 'Images, Shop'
+      }
+    }).then( (apiData) => {
+      setProductCollection(apiData.data.results);
+    });
+  }, [])
 
   return (
     <>
       <Nav/>
       <Header/>
+      <Gallery productCollection={productCollection}/>
     </>
   );
 }
