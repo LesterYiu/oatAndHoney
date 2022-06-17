@@ -20,22 +20,14 @@ const Form = (props) => {
                 <label htmlFor="shavingAndGrooming">Shaving & Grooming</label>
                 <input type="radio" name="type" id="shavingAndGrooming" value="Shaving & Grooming" onChange={handleUserChoice}/>
 
-                <label htmlFor="afterShave">Aftershave</label>
-                <input type="radio" name="type" id="afterShave" value="Aftershave" onChange={handleUserChoice}/>
-
                 <label htmlFor="skinCare">Skin care</label>
                 <input type="radio" name="type" id="skinCare" value="Skin Care" onChange={handleUserChoice}/>
 
-                <label htmlFor="facialCare">Facial care</label>
-                <input type="radio" name="type" id="facialCare" value="Facial Care" onChange={handleUserChoice}/>
-
-                {/* <label htmlFor="oralCare">Oral Care</label>
-                <input type="checkbox" name="oralCare" id="oralCare" value="Oral Care"/>
+                <label htmlFor="oralCare">Oral Care</label>
+                <input type="radio" name="type" id="oralCare" value="Oral Care" onChange={handleUserChoice}/>
 
                 <label htmlFor="deodorant">Deodorant</label>
-                <input type="checkbox" name="deodorant" id="deodorant" value="Deodorant"/>
-
-Moisturizer ,Soaps */}
+                <input type="radio" name="type" id="deodorant" value="Deodorant" onChange={handleUserChoice}/>
             </fieldset>
         </form>
     )

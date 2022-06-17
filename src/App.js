@@ -4,6 +4,7 @@ import axios from 'axios';
 import Header from './Header';
 import Nav from './Nav';
 import Gallery from './Gallery';
+import Currencies from './Currencies';
 
 /*
 ** In App Component **
@@ -48,9 +49,19 @@ NOTES:
 - Utilize Taxonomy Path for user input
 */
 
+/*
+
+Create a component to hold the user input for currencies
+
+On user input, change the currencies and multiply the price by the exchange rate
+
+*/
+
 function App() {
 
   const [productCollection, setProductCollection] = useState([]);
+  const [currencyChoice, setCurrencyChoice] = useState('USD');
+  const [exchangeRate, setExchangeRate] = useState(1);
 
   useEffect(() => {
     axios({
@@ -69,8 +80,9 @@ function App() {
   return (
     <>
       <Nav/>
+      <Currencies setCurrencyChoice={setCurrencyChoice}/>
       <Header/>
-      <Gallery productCollection={productCollection}/>
+      <Gallery productCollection={productCollection} currencyChoice={currencyChoice} setExchangeRate={setExchangeRate} exchangeRate={exchangeRate}/>
     </>
   );
 }

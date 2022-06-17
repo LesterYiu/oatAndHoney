@@ -97,9 +97,14 @@ header {
 
 /* Gallery */
 .gallery .flex-container {
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .item-container {
   width: calc((100% / 3) - 40px);
+  margin: 20px 0;
+}
+
+.item-container:nth-of-type(3n+2) {
+  margin: 20px 60px;
 }

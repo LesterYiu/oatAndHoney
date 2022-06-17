@@ -1,6 +1,7 @@
 import Item from './Item';
 import Form from './Form';
 import {useState, useEffect} from 'react';
+import axios from 'axios';
 
 const Gallery = (props) => {
 /*
@@ -12,9 +13,11 @@ const Gallery = (props) => {
 
     3. loop through the productCollection state on page load but not after.
 */
-    const [userInput, setUserInput] = useState('');
-    const {productCollection} = props;
+    const {productCollection, currencyChoice, setExchangeRate, exchangeRate} = props;
+    const [userInput, setUserInput] = useState('');    
     const [filteredCollection, setFilteredCollection] = useState([]);
+    const [currencySymbol, setCurrencySymbol] = useState('$');
+
     useEffect( () => {
         if(userInput) {
             setFilteredCollection(productCollection.filter ( (item) => {
@@ -25,6 +28,29 @@ const Gallery = (props) => {
         }
     }, [userInput, productCollection])
     
+    useEffect( () => {
+        axios({
+            url: 'https://api.vatcomply.com/rates?base=USD',
+            method: 'GET',
+            dataResponse: 'json',
+            params: {
+                base: 'USD'
+            }
+        }).then( (response) => {
+            setExchangeRate(response.data.rates[currencyChoice]);
+        })
+    }, [currencyChoice, setExchangeRate])
+
+    useEffect( () => {
+        axios({
+            url: 'https://api.vatcomply.com/currencies',
+            method: 'GET',
+            dataResponse: 'json',
+        }).then( (dataResponse) => {
+            setCurrencySymbol((dataResponse.data[currencyChoice].symbol).replace(/[a-z]/gi, ''));
+        });
+    }, [currencyChoice])
+
     return (
         <main>
             <section className="gallery">
@@ -34,7 +60,7 @@ const Gallery = (props) => {
                     <div className="flex-container">
                         { filteredCollection.map( (product) => {
                             return (
-                                <Item image={product.Images[0].url_fullxfull} key={product.listing_id} title={product.title} price={product.price} currency={product.currency_code}/>
+                                <Item image={product.Images[0].url_fullxfull} key={product.listing_id} title={product.title} price={product.price} currencyChoice={currencyChoice} exchangeRate={exchangeRate} currencySymbol={currencySymbol}/>
                             )
                         })}
                     </div>
