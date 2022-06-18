@@ -11,9 +11,9 @@ const Item = (props) => {
             price: price,
             exchangeRate: exchangeRate,
             currencyChoice: currencyChoice,
-            itemId: itemId
+            itemId: itemId,
+            currencySymbol: currencySymbol
         })
-        console.log('stored');
         setCustomerCart(userSelection);
     }
 

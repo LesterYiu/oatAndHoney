@@ -86,7 +86,7 @@ function App() {
     <>
       <Nav/>
       <Currencies setCurrencyChoice={setCurrencyChoice}/>
-      <Cart itemList={itemList} setItemList={setItemList}/>
+      <Cart itemList={itemList} setItemList={setItemList} currencyChoice={currencyChoice}/>
       <Header/>
       <Gallery productCollection={productCollection} currencyChoice={currencyChoice} setCustomerCart={setCustomerCart}/>
     </>
