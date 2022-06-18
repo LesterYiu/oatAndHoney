@@ -5,11 +5,11 @@ import axios from 'axios';
 
 const Gallery = (props) => {
 
-    const {productCollection, currencyChoice, setExchangeRate, exchangeRate, setCustomerCart} = props;
+    const {productCollection, currencyChoice, setCustomerCart} = props;
     const [userInput, setUserInput] = useState('');    
     const [filteredCollection, setFilteredCollection] = useState([]);
     const [currencySymbol, setCurrencySymbol] = useState('$');
-
+    const [exchangeRate, setExchangeRate] = useState(1);
     useEffect( () => {
         if(userInput) {
             setFilteredCollection(productCollection.filter ( (item) => {

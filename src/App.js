@@ -41,10 +41,16 @@ import { getDatabase, ref, onValue, push } from 'firebase/database';
 
 function App() {
 
+  //  Handles the items in inventory
   const [productCollection, setProductCollection] = useState([]);
+
+  // Handles currency choice of user input
   const [currencyChoice, setCurrencyChoice] = useState('USD');
-  const [exchangeRate, setExchangeRate] = useState(1);
+
+  // Pushes the item onto firebase
   const [customerCart, setCustomerCart] = useState([]);
+
+  // Firebase item
   const [itemList, setItemList] = useState([]);
 
   useEffect(() => {
@@ -69,20 +75,20 @@ function App() {
 
     onValue(dbRef, (response) => {
       const userData = response.val();
-      console.log(userData);
       for (let key in userData) {
-        newState.push(userData[key]);
+        newState.push({key: key, name: userData[key]});
       }
       setItemList(newState);
     })
   }, [customerCart])
+  
   return (
     <>
       <Nav/>
       <Currencies setCurrencyChoice={setCurrencyChoice}/>
-      <Cart itemList={itemList}/>
+      <Cart itemList={itemList} setItemList={setItemList}/>
       <Header/>
-      <Gallery productCollection={productCollection} currencyChoice={currencyChoice} setExchangeRate={setExchangeRate} exchangeRate={exchangeRate} setCustomerCart={setCustomerCart}/>
+      <Gallery productCollection={productCollection} currencyChoice={currencyChoice} setCustomerCart={setCustomerCart}/>
     </>
   );
 }

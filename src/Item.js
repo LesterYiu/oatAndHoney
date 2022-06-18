@@ -13,7 +13,7 @@ const Item = (props) => {
             currencyChoice: currencyChoice,
             itemId: itemId
         })
-
+        console.log('stored');
         setCustomerCart(userSelection);
     }
 

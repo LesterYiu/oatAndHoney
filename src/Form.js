@@ -26,6 +26,9 @@ const Form = (props) => {
                 <label htmlFor="oralCare">Oral Care</label>
                 <input type="radio" name="type" id="oralCare" value="Oral Care" onChange={handleUserChoice}/>
 
+                <label htmlFor="oralCare">Hair Care</label>
+                <input type="radio" name="type" id="hairCare" value="Hair Care" onChange={handleUserChoice}/>
+
                 <label htmlFor="deodorant">Deodorant</label>
                 <input type="radio" name="type" id="deodorant" value="Deodorant" onChange={handleUserChoice}/>
             </fieldset>
