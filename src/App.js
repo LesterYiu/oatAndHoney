@@ -5,6 +5,9 @@ import Header from './Header';
 import Nav from './Nav';
 import Gallery from './Gallery';
 import Currencies from './Currencies';
+import Cart from './Cart';
+import firebase from './firebase';
+import { getDatabase, ref, onValue, push } from 'firebase/database';
 
 /*
 ** In App Component **
@@ -34,27 +37,6 @@ import Currencies from './Currencies';
 
   - .map through, returning a image JSX element + H2 using the description + alt description with the unique user.key on each individual list.
 
-
-** STRUCTURE OF COMPONENTS **
-
-  App Component-----> Gallery Component
-  |
-  |
-  |
-  V
-Form Component
-
-
-NOTES:
-- Utilize Taxonomy Path for user input
-*/
-
-/*
-
-Create a component to hold the user input for currencies
-
-On user input, change the currencies and multiply the price by the exchange rate
-
 */
 
 function App() {
@@ -62,6 +44,8 @@ function App() {
   const [productCollection, setProductCollection] = useState([]);
   const [currencyChoice, setCurrencyChoice] = useState('USD');
   const [exchangeRate, setExchangeRate] = useState(1);
+  const [customerCart, setCustomerCart] = useState([]);
+  const [itemList, setItemList] = useState([]);
 
   useEffect(() => {
     axios({
@@ -77,12 +61,28 @@ function App() {
     });
   }, [])
 
+  useEffect( () => {
+    const database = getDatabase(firebase);
+    const dbRef = ref(database);
+    const newState = [];
+    push(dbRef, customerCart);
+
+    onValue(dbRef, (response) => {
+      const userData = response.val();
+      console.log(userData);
+      for (let key in userData) {
+        newState.push(userData[key]);
+      }
+      setItemList(newState);
+    })
+  }, [customerCart])
   return (
     <>
       <Nav/>
       <Currencies setCurrencyChoice={setCurrencyChoice}/>
+      <Cart itemList={itemList}/>
       <Header/>
-      <Gallery productCollection={productCollection} currencyChoice={currencyChoice} setExchangeRate={setExchangeRate} exchangeRate={exchangeRate}/>
+      <Gallery productCollection={productCollection} currencyChoice={currencyChoice} setExchangeRate={setExchangeRate} exchangeRate={exchangeRate} setCustomerCart={setCustomerCart}/>
     </>
   );
 }

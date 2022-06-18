@@ -1,5 +1,22 @@
 const Item = (props) => {
-    const {image, title, price, exchangeRate, currencyChoice, currencySymbol} = props;
+    const {image, title, price, exchangeRate, currencyChoice, currencySymbol, setCustomerCart, itemId} = props;
+
+    const storeUserSelection = () => {
+
+        const userSelection = [];
+
+        userSelection.push({
+            image: image,
+            title: title,
+            price: price,
+            exchangeRate: exchangeRate,
+            currencyChoice: currencyChoice,
+            itemId: itemId
+        })
+
+        setCustomerCart(userSelection);
+    }
+
     return (
         <div className="item-container">
             <div className="image-container">
@@ -7,7 +24,7 @@ const Item = (props) => {
             </div>
             <p>{title}</p>
             <p>{currencySymbol} { currencyChoice === 'JPY' || currencyChoice === 'KRW' ? Math.round(price * exchangeRate) : (price * exchangeRate).toFixed(2)} {currencyChoice}</p>
-            <button>add to bag</button>
+            <button onClick={storeUserSelection}>add to bag</button>
         </div>
     )
 }
