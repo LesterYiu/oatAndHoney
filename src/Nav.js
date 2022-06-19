@@ -6,9 +6,6 @@ const Nav = () => {
             <div className="wrapper">
                 <ul className="flexContainer">
                     <li>
-                        {/* <div className="logo-container">
-                            <img src={logo} alt="Oat & Honey company logo" />
-                        </div> */}
                         <p className='logo'>Oat & Honey</p>
                     </li>
                     <li className='shoppingContainer'>

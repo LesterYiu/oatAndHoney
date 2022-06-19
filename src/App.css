@@ -18,6 +18,7 @@ html {
 
 body {
   font-family: 'Source Sans Pro', sans-serif;
+  background-color: #F7F6EE;
 }
 
 h1,
@@ -49,8 +50,15 @@ p {
 
 button {
   background-color: transparent;
-  border: none;
+  color: rgb(76, 71, 71);
   font-family: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.shopButton {
+  padding: 20px 40px;
+  border: 1px solid black;
 }
 
 .logo {
@@ -129,7 +137,6 @@ nav ul li {
 /* Header */
 
 header {
-  background-color: #F7F6EE;
   background-repeat: none;
   background-size: contain;
 }

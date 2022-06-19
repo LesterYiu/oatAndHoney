@@ -48,9 +48,9 @@ const Gallery = (props) => {
         <main>
             <section className="gallery">
                 <div className="wrapper">
+                    <h2>Our Products</h2>
                     <Currencies setCurrencyChoice={setCurrencyChoice}/>
                     <Form setUserInput={setUserInput}/>
-                    <h2>our products</h2>
                     <div className="flexContainer">
                         { filteredCollection.map( (product) => {
                             return (
