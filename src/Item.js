@@ -19,12 +19,16 @@ const Item = (props) => {
 
     return (
         <div className="itemContainer">
-            <div className="imageContainer">
-                <img src={image} alt={title} />
+            <div className="productInfoCOntainer">
+                <div className="imageContainer">
+                    <img src={image} alt={title} />
+                </div>
+                <p>{title}</p>
             </div>
-            <p>{title}</p>
-            <p>{currencySymbol} { currencyChoice === 'JPY' || currencyChoice === 'KRW' ? Math.round(price * exchangeRate) : (price * exchangeRate).toFixed(2)} {currencyChoice}</p>
-            <button onClick={storeUserSelection}>add to bag</button>
+            <div>
+                <p className="currencyText">{currencySymbol} { currencyChoice === 'JPY' || currencyChoice === 'KRW' ? Math.round(price * exchangeRate) : (price * exchangeRate).toFixed(2)} {currencyChoice}</p>
+                <button className="addToBagButton" onClick={storeUserSelection}>add to bag</button>
+            </div>
         </div>
     )
 }

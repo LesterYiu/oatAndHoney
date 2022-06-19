@@ -1,5 +1,3 @@
-import shoppingCart from './shoppingCart.png'
-
 const Nav = () => {
     return(
         <nav>
@@ -10,7 +8,7 @@ const Nav = () => {
                     </li>
                     <li className='shoppingContainer'>
                         <button>
-                            <img className='shoppingCart' src={shoppingCart} alt="" />
+                            <i className="fa-solid fa-cart-shopping shoppingCart" aria-hidden="true"></i>
                         </button>
                     </li>
                 </ul>

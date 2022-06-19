@@ -11,6 +11,9 @@ const Gallery = (props) => {
     const [filteredCollection, setFilteredCollection] = useState([]);
     const [currencySymbol, setCurrencySymbol] = useState('$');
     const [exchangeRate, setExchangeRate] = useState(1);
+    const [isCurrencyShown, setIsCurrencyShow] = useState(false);
+    const [isProductListShown, setIsProductListShown] = useState(false);
+
     useEffect( () => {
         if(userInput) {
             setFilteredCollection(productCollection.filter ( (item) => {
@@ -44,13 +47,35 @@ const Gallery = (props) => {
         });
     }, [currencyChoice])
 
+    const handleCurrencyClick = () => {
+        setIsCurrencyShow(!isCurrencyShown);
+    }
+    
+    const handleProductClick = () => {
+        setIsProductListShown(!isProductListShown);
+    }
+
     return (
         <main>
-            <section className="gallery">
+            <section className="gallery" id="gallerySection">
                 <div className="wrapper">
                     <h2>Our Products</h2>
-                    <Currencies setCurrencyChoice={setCurrencyChoice}/>
-                    <Form setUserInput={setUserInput}/>
+                    <div className="filterButtonContainer">
+                        <button onClick={handleCurrencyClick} className="productFilter">
+                            <p>Currency</p>
+                            <i className="fa-solid fa-caret-down" aria-hidden="true"></i>
+                        </button>
+                        <button onClick={handleProductClick} className="productFilter productButtonTwo">
+                            <p>Product Type</p>
+                            <i className="fa-solid fa-caret-down" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    {
+                        isCurrencyShown ? <Currencies setCurrencyChoice={setCurrencyChoice}/> : null
+                    }
+                    {
+                        isProductListShown ? <Form setUserInput={setUserInput}/> : null
+                    }
                     <div className="flexContainer">
                         { filteredCollection.map( (product) => {
                             return (
