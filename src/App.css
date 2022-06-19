@@ -251,6 +251,11 @@ header {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
+.addToBagButton:focus {
+  outline: 2px solid #0060DF;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
 .itemContainer {
   border: 1px solid black;
   padding: 20px;
@@ -270,6 +275,12 @@ header {
   align-items: center;
 }
 
+.productFilter:focus {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  outline: 2px solid #0060DF;
+
+}
+
 .productFilter p {
   margin-right: 20px;
 }
@@ -280,26 +291,6 @@ header {
 
 .productButtonTwo {
   margin-left: 25px;
-}
-
-
-/* Form (Product Choice) */
-
-input[type=radio] {
-  appearance: none;
-}
-
-label {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin: 20px 10px;
-  border: 1px solid black;
-  padding: 5px 10px;
-  width: 200px;
-  height: 50px;
-  font-size: 1rem;
 }
 
 .formInput {
@@ -314,11 +305,43 @@ label {
 .productForm {
   margin: 25px 0;
   border: 1px solid black;
-  padding: 0px 20px;
+  padding: 0 20px;
 }
 
 fieldset {
   height: 100%;
+}
+
+input[type=radio] {
+  appearance: none;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 15px 0px;
+  border: 1px solid black;
+  padding: 5px 10px;
+  width: calc((100% / 6) - 10px);
+  height: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.activeChoice {
+  background: #D6C49E;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+label:nth-of-type(2n+2) {
+  margin: 15px 10px;
+}
+
+label:focus-within {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  outline: 2px solid #0060DF;
 }
 
 legend {
