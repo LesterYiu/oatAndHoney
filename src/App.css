@@ -32,7 +32,8 @@ h4,
 ul,
 li,
 p,
-button {
+button,
+fieldset {
   margin: 0;
   padding: 0;
 }
@@ -54,6 +55,7 @@ h1 {
 h2 {
   font-size: 2.3rem;
   text-align: center;
+  margin-bottom: 50px;
 }
 
 p,
@@ -262,7 +264,7 @@ header {
 .productFilter {
   color: black;
   border: 1px solid black;
-  padding: 8px;
+  padding: 8px 20px 8px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -278,6 +280,49 @@ header {
 
 .productButtonTwo {
   margin-left: 25px;
+}
+
+
+/* Form (Product Choice) */
+
+input[type=radio] {
+  appearance: none;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 20px 10px;
+  border: 1px solid black;
+  padding: 5px 10px;
+  width: 200px;
+  height: 50px;
+  font-size: 1rem;
+}
+
+.formInput {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.currencyForm,
+.productForm {
+  margin: 25px 0;
+  border: 1px solid black;
+  padding: 0px 20px;
+}
+
+fieldset {
+  height: 100%;
+}
+
+legend {
+  margin: 20px 0px 0px 10px;
 }
 
 /* Animations */

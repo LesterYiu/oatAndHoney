@@ -49,10 +49,16 @@ const Gallery = (props) => {
 
     const handleCurrencyClick = () => {
         setIsCurrencyShow(!isCurrencyShown);
+        if (isProductListShown) {
+            setIsProductListShown(!isProductListShown);
+        }
     }
     
     const handleProductClick = () => {
         setIsProductListShown(!isProductListShown);
+        if (isCurrencyShown) {
+            setIsCurrencyShow(!isCurrencyShown);
+        }
     }
 
     return (
