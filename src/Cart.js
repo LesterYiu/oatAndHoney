@@ -54,8 +54,8 @@ const Cart = (props) => {
             {
                 itemList.map( (item) => {
                     return (
-                        <div className="item-container" key={uuid()} id={uuid()}>
-                            <div className="image-container">
+                        <div className="itemContainer" key={uuid()} id={uuid()}>
+                            <div className="imageContainer">
                                 <img src={item.name[0].image} alt={item.name[0].title} />
                             </div>
                             <p>{item.name[0].title}</p>

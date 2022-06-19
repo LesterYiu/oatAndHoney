@@ -1,11 +1,12 @@
 import Item from './Item';
 import Form from './Form';
+import Currencies from './Currencies';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 
 const Gallery = (props) => {
 
-    const {productCollection, currencyChoice, setCustomerCart} = props;
+    const {productCollection, currencyChoice, setCustomerCart, setCurrencyChoice} = props;
     const [userInput, setUserInput] = useState('');    
     const [filteredCollection, setFilteredCollection] = useState([]);
     const [currencySymbol, setCurrencySymbol] = useState('$');
@@ -47,9 +48,10 @@ const Gallery = (props) => {
         <main>
             <section className="gallery">
                 <div className="wrapper">
+                    <Currencies setCurrencyChoice={setCurrencyChoice}/>
                     <Form setUserInput={setUserInput}/>
                     <h2>our products</h2>
-                    <div className="flex-container">
+                    <div className="flexContainer">
                         { filteredCollection.map( (product) => {
                             return (
                                 <Item image={product.Images[0].url_fullxfull} key={product.listing_id} itemId={product.listing_id} title={product.title} price={product.price} currencyChoice={currencyChoice} exchangeRate={exchangeRate} currencySymbol={currencySymbol} setCustomerCart={setCustomerCart}/>

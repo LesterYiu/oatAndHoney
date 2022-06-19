@@ -1,18 +1,21 @@
-import logo from './logo.png';
+import shoppingCart from './shoppingCart.png'
 
 const Nav = () => {
     return(
         <nav>
             <div className="wrapper">
-                <ul className="flex-container">
+                <ul className="flexContainer">
                     <li>
-                        <div className="logo-container">
+                        {/* <div className="logo-container">
                             <img src={logo} alt="Oat & Honey company logo" />
-                        </div>
+                        </div> */}
+                        <p className='logo'>Oat & Honey</p>
                     </li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                    <li className='shoppingContainer'>
+                        <button>
+                            <img className='shoppingCart' src={shoppingCart} alt="" />
+                        </button>
+                    </li>
                 </ul>
             </div>
         </nav>

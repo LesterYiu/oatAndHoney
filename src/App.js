@@ -4,7 +4,6 @@ import axios from 'axios';
 import Header from './Header';
 import Nav from './Nav';
 import Gallery from './Gallery';
-import Currencies from './Currencies';
 import Cart from './Cart';
 import firebase from './firebase';
 import { getDatabase, ref, onValue, push } from 'firebase/database';
@@ -85,10 +84,9 @@ function App() {
   return (
     <>
       <Nav/>
-      <Currencies setCurrencyChoice={setCurrencyChoice}/>
-      <Cart itemList={itemList} setItemList={setItemList} currencyChoice={currencyChoice}/>
       <Header/>
-      <Gallery productCollection={productCollection} currencyChoice={currencyChoice} setCustomerCart={setCustomerCart}/>
+      <Cart itemList={itemList} setItemList={setItemList} currencyChoice={currencyChoice}/>
+      <Gallery productCollection={productCollection} currencyChoice={currencyChoice} setCustomerCart={setCustomerCart} setCurrencyChoice={setCurrencyChoice}/>
     </>
   );
 }
