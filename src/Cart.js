@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const Cart = (props) => {
-    const {itemList, setItemList, currencyChoice} = props;
+    const {itemList, setItemList, currencyChoice, setIsCartClicked} = props;
     const [cartCurrency, setCartCurrency] = useState(1);
     const [cartCurrencySymbol, setCartCurrencySymbol] = useState('$');
     const [cartTotal, setCartTotal] = useState(0);
@@ -49,6 +49,10 @@ const Cart = (props) => {
         })
     }
 
+    const handleExitClick = () => {
+        setIsCartClicked(false);
+    }
+
     useEffect( () => {
         const totalPriceArray = [];
 
@@ -67,6 +71,9 @@ const Cart = (props) => {
                 <h2>Your Cart</h2>
                 <p>{itemList.length} item(s)</p>
             </div>
+            <button className='exitCart' onClick={handleExitClick}>
+                <i className="fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
             <div className="cartWrapper">
                 {
                     itemList.map( (item) => {

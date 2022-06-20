@@ -1,12 +1,14 @@
 import './App.css';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
+import firebase from './firebase';
+import { getDatabase, ref, onValue, push } from 'firebase/database';
 import Header from './Header';
 import Nav from './Nav';
 import Gallery from './Gallery';
 import Cart from './Cart';
-import firebase from './firebase';
-import { getDatabase, ref, onValue, push } from 'firebase/database';
+import Footer from './Footer';
+
 
 function App() {
 
@@ -22,6 +24,7 @@ function App() {
   // Firebase item
   const [itemList, setItemList] = useState([]);
 
+  // Cart Button
   const [isCartClicked, setIsCartClicked] = useState(false);
 
   useEffect(() => {
@@ -57,8 +60,9 @@ function App() {
     <>
       <Nav setIsCartClicked={setIsCartClicked} isCartClicked={isCartClicked} itemList={itemList}/>
       <Header/>
-      {isCartClicked ? <Cart itemList={itemList} setItemList={setItemList} currencyChoice={currencyChoice}/> : null}
+      {isCartClicked ? <Cart itemList={itemList} setItemList={setItemList} currencyChoice={currencyChoice} setIsCartClicked={setIsCartClicked}/> : null}
       <Gallery productCollection={productCollection} currencyChoice={currencyChoice} setCustomerCart={setCustomerCart} setCurrencyChoice={setCurrencyChoice}/>
+      <Footer/>
     </>
   );
 }

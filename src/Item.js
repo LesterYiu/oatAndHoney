@@ -18,7 +18,7 @@ const Item = (props) => {
 
     return (
         <div className="itemContainer">
-            <div className="productInfoCOntainer">
+            <div className="productInfoContainer">
                 <div className="imageContainer">
                     <img src={image} alt={title} />
                 </div>
