@@ -22,6 +22,8 @@ function App() {
   // Firebase item
   const [itemList, setItemList] = useState([]);
 
+  const [isCartClicked, setIsCartClicked] = useState(false);
+
   useEffect(() => {
     axios({
       url: 'https://powerful-peak-98750.herokuapp.com/https://openapi.etsy.com/v2/shops/18372328/listings/active/',
@@ -53,10 +55,10 @@ function App() {
   
   return (
     <>
-      <Nav/>
+      <Nav setIsCartClicked={setIsCartClicked} isCartClicked={isCartClicked}/>
       <Header/>
+      {isCartClicked ? <Cart itemList={itemList} setItemList={setItemList} currencyChoice={currencyChoice}/> : null}
       <Gallery productCollection={productCollection} currencyChoice={currencyChoice} setCustomerCart={setCustomerCart} setCurrencyChoice={setCurrencyChoice}/>
-      <Cart itemList={itemList} setItemList={setItemList} currencyChoice={currencyChoice}/>
     </>
   );
 }

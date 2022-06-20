@@ -1,4 +1,6 @@
-const Nav = () => {
+const Nav = (props) => {
+    const {setIsCartClicked, isCartClicked} = props;
+
     return(
         <nav>
             <div className="wrapper">
@@ -7,7 +9,7 @@ const Nav = () => {
                         <p className='logo'>Oat & Honey</p>
                     </li>
                     <li className='shoppingContainer'>
-                        <button>
+                        <button onClick={() => {setIsCartClicked(!isCartClicked)}}>
                             <i className="fa-solid fa-cart-shopping shoppingCart" aria-hidden="true"></i>
                         </button>
                     </li>

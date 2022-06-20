@@ -49,23 +49,30 @@ const Cart = (props) => {
     }
 
     return(
-        <>  
-            <h2>Cart</h2>
+        <div className='cartMenu'>  
+            <div className="cartTitle">
+                <h2>Your Cart</h2>
+                <p>0 item(s)</p>
+            </div>
             {
                 itemList.map( (item) => {
                     return (
-                        <div className="itemContainer" key={uuid()} id={uuid()}>
-                            <div className="imageContainer">
+                        <div className="cartItemContainer" key={uuid()} id={uuid()}>
+                            <div className="cartItemImageContainer">
                                 <img src={item.name[0].image} alt={item.name[0].title} />
                             </div>
-                            <p>{item.name[0].title}</p>
-                            <p>{cartCurrencySymbol} { currencyChoice === 'JPY' || currencyChoice === 'KRW' ? Math.round(item.name[0].price * cartCurrency) : (item.name[0].price * cartCurrency).toFixed(2)} {currencyChoice}</p>
-                            <button onClick={() => {handleRemove(item.key)}}>Remove from cart</button>
+                            <div className="cartItemInfo">
+                                <p>{item.name[0].title}</p>
+                                <p>{cartCurrencySymbol} { currencyChoice === 'JPY' || currencyChoice === 'KRW' ? Math.round(item.name[0].price * cartCurrency) : (item.name[0].price * cartCurrency).toFixed(2)} {currencyChoice}</p>
+                                <button onClick={() => {handleRemove(item.key)}}>
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
                         </div>
                     )
                 })
             }
-        </>
+        </div>
     )
 }
 
