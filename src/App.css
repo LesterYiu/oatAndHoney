@@ -217,6 +217,19 @@ header {
   text-align: center;
 }
 
+.cartNumber {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: -5px;
+  right: -5px;
+  background-color: #D4B2AA;
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+}
+
 /* Gallery */
 .gallery {
   padding: 75px 0;
@@ -396,6 +409,10 @@ legend {
 
 .cartItemImageContainer img {
   object-fit: cover;
+}
+
+.cartContainer {
+  position: relative;
 }
 
 .cartItemInfo {

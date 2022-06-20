@@ -1,5 +1,5 @@
 const Nav = (props) => {
-    const {setIsCartClicked, isCartClicked} = props;
+    const {setIsCartClicked, isCartClicked, itemList} = props;
 
     return(
         <nav>
@@ -9,9 +9,12 @@ const Nav = (props) => {
                         <p className='logo'>Oat & Honey</p>
                     </li>
                     <li className='shoppingContainer'>
-                        <button onClick={() => {setIsCartClicked(!isCartClicked)}}>
-                            <i className="fa-solid fa-cart-shopping shoppingCart" aria-hidden="true"></i>
-                        </button>
+                        <div className="cartContainer">
+                            <button onClick={() => {setIsCartClicked(!isCartClicked)}}>
+                                <i className="fa-solid fa-cart-shopping shoppingCart" aria-hidden="true"></i>
+                            </button>
+                            <span className="cartNumber">{itemList.length}</span>
+                        </div>
                     </li>
                 </ul>
             </div>

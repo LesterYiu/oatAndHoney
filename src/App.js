@@ -55,7 +55,7 @@ function App() {
   
   return (
     <>
-      <Nav setIsCartClicked={setIsCartClicked} isCartClicked={isCartClicked}/>
+      <Nav setIsCartClicked={setIsCartClicked} isCartClicked={isCartClicked} itemList={itemList}/>
       <Header/>
       {isCartClicked ? <Cart itemList={itemList} setItemList={setItemList} currencyChoice={currencyChoice}/> : null}
       <Gallery productCollection={productCollection} currencyChoice={currencyChoice} setCustomerCart={setCustomerCart} setCurrencyChoice={setCurrencyChoice}/>
