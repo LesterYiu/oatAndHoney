@@ -4,11 +4,10 @@ const Item = (props) => {
     const storeUserSelection = () => {
 
         const userSelection = [];
-
         userSelection.push({
             image: image,
             title: title,
-            price: price,
+            price: parseFloat(price),
             exchangeRate: exchangeRate,
             currencyChoice: currencyChoice,
             itemId: itemId,
