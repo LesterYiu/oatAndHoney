@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Item = (props) => {
     const {image, title, price, exchangeRate, currencyChoice, currencySymbol, setCustomerCart, itemId} = props;
 
@@ -11,19 +13,21 @@ const Item = (props) => {
             exchangeRate: exchangeRate,
             currencyChoice: currencyChoice,
             itemId: itemId,
-            currencySymbol: currencySymbol
+            currencySymbol: currencySymbol,
         })
         setCustomerCart(userSelection);
     }
 
     return (
         <div className="itemContainer">
-            <div className="productInfoContainer">
-                <div className="imageContainer">
-                    <img src={image} alt={title} />
+            <Link to={`/product/${itemId}`}>
+                <div className="productInfoContainer">
+                    <div className="imageContainer">
+                        <img src={image} alt={title} />
+                    </div>
+                    <p>{title}</p>
                 </div>
-                <p>{title}</p>
-            </div>
+            </Link>
             <div>
                 <p className="currencyText">{currencySymbol} { currencyChoice === 'JPY' || currencyChoice === 'KRW' ? Math.round(price * exchangeRate) : (price * exchangeRate).toFixed(2)} {currencyChoice}</p>
                 <button className="addToBagButton" onClick={storeUserSelection}>add to bag</button>

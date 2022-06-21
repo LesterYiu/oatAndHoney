@@ -48,7 +48,6 @@ const Cart = (props) => {
             setItemList(newState);
         })
     }
-
     const handleExitClick = () => {
         setIsCartClicked(false);
     }

@@ -9,7 +9,7 @@ const Nav = (props) => {
             <div className="wrapper">
                 <ul className="flexContainer">
                     <li>
-                        <span class="flexContainer">
+                        <span className="flexContainer">
                             <img src={honeyIcon} alt="" className="honeyIcon"/>
                             <p className='logo'> <span aria-hidden="true" className="logoDivider">|</span> Oat & Honey</p>
                         </span>

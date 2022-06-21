@@ -6,6 +6,15 @@ import axios from 'axios';
 
 const Gallery = (props) => {
 
+    /*
+    PSEUDO CODE
+
+    1. Create a modal that will open when an item is clicked, containing information about the item, item description, price, ETC.
+
+    2. Once the item is clicked ( the item is setting state ), the modal will populate the new data.
+
+    */
+
     const {productCollection, currencyChoice, setCustomerCart, setCurrencyChoice} = props;
     const [userInput, setUserInput] = useState('');    
     const [filteredCollection, setFilteredCollection] = useState([]);
@@ -85,7 +94,7 @@ const Gallery = (props) => {
                     <div className="flexContainer">
                         { filteredCollection.map( (product) => {
                             return (
-                                <Item image={product.Images[0].url_fullxfull} key={product.listing_id} itemId={product.listing_id} title={product.title} price={product.price} currencyChoice={currencyChoice} exchangeRate={exchangeRate} currencySymbol={currencySymbol} setCustomerCart={setCustomerCart}/>
+                                <Item image={product.Images[0].url_fullxfull} key={product.listing_id} itemId={product.listing_id} title={product.title} price={product.price} description={product.materials} currencyChoice={currencyChoice} exchangeRate={exchangeRate} currencySymbol={currencySymbol} setCustomerCart={setCustomerCart}/>
                             )
                         })}
                     </div>

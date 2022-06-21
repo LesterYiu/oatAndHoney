@@ -506,6 +506,11 @@ legend {
   padding: 10px 0;
 }
 
+.cartItemInfo button:focus {
+  outline: 2px solid #0060DF;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
 .cartCheckout {
   border-top: 1px solid black;
   margin-top: 10px;
@@ -524,6 +529,42 @@ legend {
   background-color: #D6C49E;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
   margin: 15px 0 25px 0;
+}
+
+/* Item Modal */
+
+.itemModal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color:#F7F6EE;
+  overflow-y: scroll;
+  padding: 75px 0;
+}
+
+.itemModal h2 {
+  font-size: 1.3rem;
+  text-align: start;
+  margin-bottom: 10px;
+}
+
+.itemModal .flexContainer {
+  justify-content: space-between;
+}
+
+.modalInfo,
+.modalImageContainer {
+  width: 48%;
+}
+
+.productId {
+  font-size: 0.8rem;
+}
+
+.modalInfo li {
+  text-transform: capitalize;
 }
 
 /* Footer */

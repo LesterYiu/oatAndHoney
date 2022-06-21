@@ -1,6 +1,8 @@
 import './App.css';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
+import FocusLock from 'react-focus-lock';
+import { Routes, Route} from 'react-router-dom';
 import firebase from './firebase';
 import { getDatabase, ref, onValue, push } from 'firebase/database';
 import Header from './Header';
@@ -8,6 +10,7 @@ import Nav from './Nav';
 import Gallery from './Gallery';
 import Cart from './Cart';
 import Footer from './Footer';
+import ItemModal from './ItemModal';
 
 
 function App() {
@@ -55,16 +58,20 @@ function App() {
       setItemList(newState);
     })
   }, [customerCart])
-  console.log(productCollection);
   return (
-    <>
-      {isCartClicked ? <div className="coverPage"></div> : null}
-      <Nav setIsCartClicked={setIsCartClicked} isCartClicked={isCartClicked} itemList={itemList}/>
-      <Header/>
-      {isCartClicked ? <Cart itemList={itemList} setItemList={setItemList} currencyChoice={currencyChoice} setIsCartClicked={setIsCartClicked}/> : null}
-      <Gallery productCollection={productCollection} currencyChoice={currencyChoice} setCustomerCart={setCustomerCart} setCurrencyChoice={setCurrencyChoice}/>
-      <Footer/>
-    </>
+    <Routes>
+      <Route path="/" element={
+        <>
+          {isCartClicked ? <div className="coverPage"></div> : null}
+          <Nav setIsCartClicked={setIsCartClicked} isCartClicked={isCartClicked} itemList={itemList}/>
+          <Header/>
+          {isCartClicked ? <FocusLock><Cart itemList={itemList} setItemList={setItemList} currencyChoice={currencyChoice} setIsCartClicked={setIsCartClicked}/></FocusLock> : false}
+          <Gallery productCollection={productCollection} currencyChoice={currencyChoice} setCustomerCart={setCustomerCart} setCurrencyChoice={setCurrencyChoice}/>
+          <Footer/>
+        </>
+      }></Route>
+      <Route path="/product/:itemID" element={<ItemModal/>}/>
+    </Routes>
   );
 }
 
