@@ -55,7 +55,7 @@ function App() {
       setItemList(newState);
     })
   }, [customerCart])
-  
+  console.log(productCollection);
   return (
     <>
       {isCartClicked ? <div className="coverPage"></div> : null}
