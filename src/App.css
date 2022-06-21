@@ -138,6 +138,18 @@ address {
   z-index: 10;
 }
 
+.shopButton,
+.itemContainer,
+.imageContainer img,
+.addToBagButton,
+.cartItemContainer,
+.cartItemImageContainer img,
+.cartItemInfo button,
+.buyNow,
+.productFilter {
+  border-radius: 5px;
+}
+
 /* Nav */
 
 nav {
@@ -541,7 +553,7 @@ footer input {
 
 footer button {
   width: 30%;
-  background-color: #F7F6EE;
+  background-color: #C4C1AE;
   height: 50px;
 }
 
@@ -638,7 +650,11 @@ footer ul.flexContainer li:nth-child(2) {
 
   .headerIconContainer {
     width: 100%;
-    height: 50vh;
+    height: 400px;
+  }
+
+  .headerProducts img {
+    object-position: 0% 70%;
   }
 
   .headerInformation {
@@ -655,10 +671,6 @@ footer ul.flexContainer li:nth-child(2) {
 
   .cartItemImageContainer {
     width: 100%;
-  }
-
-  .cartItemImageContainer img {
-    object-fit: contain;
   }
 
   .cartItemInfo {
