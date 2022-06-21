@@ -79,12 +79,13 @@ button {
 .shopButton {
   padding: 20px 40px;
   background-color: #D6C49E;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 10px rgb(214, 196, 158, 0.9);
   cursor: pointer;
 }
 
 .logo {
   font-size: 1.5rem;
+  color: black;
 }
 
 .wrapper {
@@ -140,16 +141,18 @@ address {
 
 .shopButton,
 .itemContainer,
-.imageContainer img,
 .addToBagButton,
 .cartItemContainer,
 .cartItemImageContainer img,
 .cartItemInfo button,
 .buyNow,
 .productFilter {
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
+.imageContainer img {
+  border-radius: 50%;
+}
 /* Nav */
 
 nav {
@@ -169,9 +172,18 @@ nav {
   height: 150px;
 }
 
-.shoppingCart {
-  width: 45px;
-  height: 45px;
+.honeyIcon {
+  width: 50px;
+  height: 50px;
+}
+
+nav span.flexContainer {
+  justify-content: center;
+  align-items: center;
+}
+
+.logoDivider {
+  margin: 0px 10px 0px 5px;
 }
 
 nav ul.flexContainer {
@@ -186,7 +198,7 @@ nav ul li {
 
 .shoppingContainer {
   position: absolute;
-  right: 0;
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -195,8 +207,10 @@ nav ul li {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: black;
   font-size: 1.2rem;
+  width: 45px;
+  height: 45px;
 }
 
 .skipToMain {
@@ -269,7 +283,8 @@ header {
   align-items: center;
   bottom: -5px;
   right: -5px;
-  background-color: #D4B2AA;
+  background-color: #F0F0F0;
+  color: black;
   border-radius: 50%;
   height: 25px;
   width: 25px;
@@ -290,7 +305,9 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #F2E6CC6E
+  background-color: #F2E6CC6E;
+  padding: 20px;
+  box-shadow: 0 3px 10px rgb(214, 196, 158, 0.9);
 }
 
 .itemContainer:nth-of-type(3n+2) {
@@ -307,18 +324,12 @@ header {
   padding: 15px 30px;
   background-color: #D6C49E;
   width: 100%;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 10px rgb(214, 196, 158, 0.9);
 }
 
 .addToBagButton:focus {
   outline: 2px solid #0060DF;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-}
-
-.itemContainer {
-  border: 1px solid black;
-  padding: 20px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .imageContainer {
@@ -327,7 +338,7 @@ header {
 
 .productFilter {
   color: black;
-  border: 1px solid black;
+  box-shadow: 0 3px 10px rgb(214, 196, 158, 0.9);
   background-color: #F2E6CC6E;
   padding: 8px 20px 8px 20px;
   display: flex;
@@ -462,9 +473,9 @@ legend {
 .cartItemContainer {
   margin: 25px 0;
   padding: 10px;
-  border: 1px solid black;
+  box-shadow: 0 3px 10px rgb(214, 196, 158, 0.9);
+  background-color: #F2E6CC6E;
   display: flex;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .cartItemImageContainer {
@@ -521,7 +532,7 @@ footer {
   background-color: #D6C49E;
   padding: 75px 0;
   border-top: 1px solid black;
-  color: white;
+  color: black;
 }
 
 footer h3 {
@@ -686,7 +697,7 @@ footer ul.flexContainer li:nth-child(2) {
   /* Gallery */
 
   .itemContainer {
-    width:calc((100% /2) - 30px);
+    width:calc((100% /2) - 15px);
   }
   
   .itemContainer:nth-of-type(odd) {
@@ -694,14 +705,38 @@ footer ul.flexContainer li:nth-child(2) {
   }
 
   .itemContainer:nth-of-type(even) {
-    margin: 20px 0px 20px 60px;
+    margin: 20px 0px 20px 30px;
   }
 }
 
 @media (max-width: 615px) {
-  /* Gallery Section */
+  /* Nav */
+
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .honeyIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  nav ul.flexContainer {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Header */
+
+  .shopButton {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Gallery */
   .filterButtonContainer {
-    justify-content: space-between ;
+    justify-content: space-between;
   }
 
   .productFilter {
@@ -712,7 +747,7 @@ footer ul.flexContainer li:nth-child(2) {
     width: 100%;
     height: 50%;
   }
-  
+
   .imageContainer img {
     object-fit: contain;
     width: 100%;
@@ -732,17 +767,7 @@ footer ul.flexContainer li:nth-child(2) {
   .productInfoContainer {
     height: 50%;
   }
-}
 
-@media (max-width: 480px) {
-  /* Header */
-
-  .shopButton {
-    width: 100%;
-    text-align: center;
-  }
-
-  /* Gallery */
   .filterButtonContainer {
     flex-direction: column;
   }

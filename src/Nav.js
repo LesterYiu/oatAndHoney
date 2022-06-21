@@ -1,3 +1,5 @@
+import honeyIcon from './honeyIcon.png';
+
 const Nav = (props) => {
     const {setIsCartClicked, isCartClicked, itemList} = props;
 
@@ -7,7 +9,10 @@ const Nav = (props) => {
             <div className="wrapper">
                 <ul className="flexContainer">
                     <li>
-                        <p className='logo'>Oat & Honey</p>
+                        <span class="flexContainer">
+                            <img src={honeyIcon} alt="" className="honeyIcon"/>
+                            <p className='logo'> <span aria-hidden="true" className="logoDivider">|</span> Oat & Honey</p>
+                        </span>
                     </li>
                     <li className='shoppingContainer'>
                         <div className='cartContainer'>
