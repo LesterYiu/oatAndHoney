@@ -58,6 +58,7 @@ function App() {
   
   return (
     <>
+      {isCartClicked ? <div className="coverPage"></div> : null}
       <Nav setIsCartClicked={setIsCartClicked} isCartClicked={isCartClicked} itemList={itemList}/>
       <Header/>
       {isCartClicked ? <Cart itemList={itemList} setItemList={setItemList} currencyChoice={currencyChoice} setIsCartClicked={setIsCartClicked}/> : null}

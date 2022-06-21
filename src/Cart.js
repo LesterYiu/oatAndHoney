@@ -65,13 +65,19 @@ const Cart = (props) => {
 
     }, [itemList]);
 
+    const handleCartExitKey = (e) => {
+        if (e.code === 'Enter') {
+            handleExitClick();
+        }
+    }
+
     return(
         <div className='cartMenu'>  
             <div className="cartTitle">
                 <h2>Your Cart</h2>
                 <p>{itemList.length} item(s)</p>
             </div>
-            <button className='exitCart' onClick={handleExitClick}>
+            <button className='exitCart' onClick={handleExitClick} onKeyPress={handleCartExitKey}>
                 <i className="fa-solid fa-xmark" aria-hidden="true"></i>
             </button>
             <div className="cartWrapper">
