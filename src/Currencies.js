@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState} from "react";
 
 const Currencies = (props) => {
     const {setCurrencyChoice} = props;
@@ -31,7 +31,7 @@ const Currencies = (props) => {
     }
 
     const handleKeyPress = (e, handleFunction) => {
-        if (e.code === 'Enter') {
+        if (e.code === "Enter") {
             setAllInput();
             handleFunction();
             setCurrencyChoice(e.target.nextElementSibling.value);

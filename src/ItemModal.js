@@ -1,5 +1,5 @@
 import uuid from "react-uuid";
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -27,11 +27,11 @@ const ItemModal = (props) => {
     useEffect(() => {
         axios({
             url: `https://powerful-peak-98750.herokuapp.com/https://openapi.etsy.com/v2/listings//${itemID}`,
-            dataResponse: 'json',
-            method: 'GET',
+            dataResponse: "json",
+            method: "GET",
             params: {
-                api_key: 'l227pbb94xqk5gj4mfg9ayva',
-                includes: 'Images, Shop'
+                api_key: "l227pbb94xqk5gj4mfg9ayva",
+                includes: "Images, Shop"
             }
         }).then( (apiData) => {
             setSingleItem(apiData.data.results);
@@ -52,7 +52,7 @@ const ItemModal = (props) => {
                                 <div className="modalInfo">
                                     <h2>{item.title}</h2>
                                     <p className="productId">Item ID: {item.listing_id}</p>
-                                    <p className="modalPrice">{currencySymbol} {currencyChoice === 'JPY' || currencyChoice === 'KRW' ? Math.round(item.price * exchangeRate) : (item.price * exchangeRate).toFixed(2)} {currencyChoice}</p>
+                                    <p className="modalPrice">{currencySymbol} {currencyChoice === "JPY" || currencyChoice === "KRW" ? Math.round(item.price * exchangeRate) : (item.price * exchangeRate).toFixed(2)} {currencyChoice}</p>
                                     <h3 onClick={() => {setIsInfoClicked(!isInfoClicked)}}>Ingredients
                                         <button aria-label="see description">
                                             {isInfoClicked ? <i className="fa-solid fa-minus ingredientIcon"></i> : <i className="fa-solid fa-plus ingredientIcon" aria-hidden="true"></i>}

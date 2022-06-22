@@ -17,10 +17,10 @@ const Footer = () => {
                     <ul className="footerUpdated">
                         <h3 className="middleHeading">Stay Updated</h3>
                         <p>Subscribe to our newsletter to stay updated.</p>
-                        <form action='#'>
-                            <label htmlFor='userEmail' className="sr-only">Email Address</label>
-                            <input id='userEmail' type='email' placeholder='Email Address' required/>
-                            <button type='submit'>Submit</button>
+                        <form action="#">
+                            <label htmlFor="userEmail" className="sr-only">Email Address</label>
+                            <input id="userEmail" type="email" placeholder="Email Address" required/>
+                            <button type="submit">Submit</button>
                         </form>
                     </ul>
                     <ul className="footerSocials">

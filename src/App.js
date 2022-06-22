@@ -1,16 +1,16 @@
-import './App.css';
-import {useState, useEffect} from 'react';
-import axios from 'axios';
-import FocusLock from 'react-focus-lock';
-import { Routes, Route} from 'react-router-dom';
-import firebase from './firebase';
-import { getDatabase, ref, onValue, push } from 'firebase/database';
-import Header from './Header';
-import Nav from './Nav';
-import Gallery from './Gallery';
-import Cart from './Cart';
-import Footer from './Footer';
-import ItemModal from './ItemModal';
+import "./App.css";
+import {useState, useEffect} from "react";
+import axios from "axios";
+import FocusLock from "react-focus-lock";
+import { Routes, Route} from "react-router-dom";
+import firebase from "./firebase";
+import { getDatabase, ref, onValue, push } from "firebase/database";
+import Header from "./Header";
+import Nav from "./Nav";
+import Gallery from "./Gallery";
+import Cart from "./Cart";
+import Footer from "./Footer";
+import ItemModal from "./ItemModal";
 
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
   const [productCollection, setProductCollection] = useState([]);
 
   // Handles currency choice of user input
-  const [currencyChoice, setCurrencyChoice] = useState('USD');
+  const [currencyChoice, setCurrencyChoice] = useState("USD");
 
   // Pushes the item onto firebase
   const [customerCart, setCustomerCart] = useState([]);
@@ -34,16 +34,16 @@ function App() {
   const [exchangeRate, setExchangeRate] = useState(1);
 
   // Currency Symbol
-  const [currencySymbol, setCurrencySymbol] = useState('$');
+  const [currencySymbol, setCurrencySymbol] = useState("$");
 
   useEffect(() => {
     axios({
-      url: 'https://powerful-peak-98750.herokuapp.com/https://openapi.etsy.com/v2/shops/18372328/listings/active/',
-      dataResponse: 'json',
-      method: 'GET',
+      url: "https://powerful-peak-98750.herokuapp.com/https://openapi.etsy.com/v2/shops/18372328/listings/active/",
+      dataResponse: "json",
+      method: "GET",
       params: {
-        api_key: 'l227pbb94xqk5gj4mfg9ayva',
-        includes: 'Images, Shop'
+        api_key: "l227pbb94xqk5gj4mfg9ayva",
+        includes: "Images, Shop"
       }
     }).then( (apiData) => {
       setProductCollection(apiData.data.results);

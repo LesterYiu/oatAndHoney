@@ -1,13 +1,13 @@
-import Item from './Item';
-import Form from './Form';
-import Currencies from './Currencies';
-import {useState, useEffect} from 'react';
-import axios from 'axios';
+import Item from "./Item";
+import Form from "./Form";
+import Currencies from "./Currencies";
+import {useState, useEffect} from "react";
+import axios from "axios";
 
 const Gallery = (props) => {
 
     const {productCollection, currencyChoice, setCustomerCart, setCurrencyChoice, setExchangeRate, exchangeRate, currencySymbol, setCurrencySymbol} = props;
-    const [userInput, setUserInput] = useState('');    
+    const [userInput, setUserInput] = useState("");    
     const [filteredCollection, setFilteredCollection] = useState([]);
     // const [exchangeRate, setExchangeRate] = useState(1);
     const [isCurrencyShown, setIsCurrencyShow] = useState(false);
@@ -25,11 +25,11 @@ const Gallery = (props) => {
     
     useEffect( () => {
         axios({
-            url: 'https://api.vatcomply.com/rates?base=USD',
-            method: 'GET',
-            dataResponse: 'json',
+            url: "https://api.vatcomply.com/rates?base=USD",
+            method: "GET",
+            dataResponse: "json",
             params: {
-                base: 'USD'
+                base: "USD"
             }
         }).then( (response) => {
             setExchangeRate(response.data.rates[currencyChoice]);
@@ -38,11 +38,11 @@ const Gallery = (props) => {
 
     useEffect( () => {
         axios({
-            url: 'https://api.vatcomply.com/currencies',
-            method: 'GET',
-            dataResponse: 'json',
+            url: "https://api.vatcomply.com/currencies",
+            method: "GET",
+            dataResponse: "json",
         }).then( (dataResponse) => {
-            setCurrencySymbol((dataResponse.data[currencyChoice].symbol).replace(/[a-z]/gi, ''));
+            setCurrencySymbol((dataResponse.data[currencyChoice].symbol).replace(/[a-z]/gi, ""));
         });
     }, [currencyChoice, setCurrencySymbol])
 
