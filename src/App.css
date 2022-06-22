@@ -148,7 +148,8 @@ address {
 .buyNow,
 .productFilter,
 .itemModal img,
-.itemModal button {
+.itemModal button,
+label {
   border-radius: 3px;
 }
 
@@ -379,8 +380,9 @@ header {
 .currencyForm,
 .productForm {
   margin: 25px 0;
-  border: 1px solid black;
-  padding: 0 20px;
+  background-color: #F2E6CC6E;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  padding: 35px;
 }
 
 fieldset {
@@ -397,7 +399,8 @@ label {
   justify-content: center;
   text-align: center;
   margin: 15px 0px;
-  border: 1px solid black;
+  background-color: #D6C49E;
+  box-shadow: 0 3px 10px rgb(214, 196, 158, 0.9);
   padding: 5px 10px;
   width: calc((100% / 6) - 10px);
   height: 50px;
@@ -420,7 +423,9 @@ label:focus-within {
 }
 
 legend {
-  margin: 20px 0px 0px 10px;
+  margin: 20px 0px 0px 0px;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
 /* Cart */
@@ -797,6 +802,9 @@ footer ul.flexContainer li:nth-child(2) {
     margin: 20px 0px 20px 30px;
   }
 
+  label {
+    width: calc((100% / 4) - 10px);
+  }
   /* Modal */
 
   .itemModal .flexContainer {
@@ -841,6 +849,20 @@ footer ul.flexContainer li:nth-child(2) {
   nav ul.flexContainer {
     justify-content: space-between;
   }
+
+  /* Gallery */
+
+  label {
+    width: calc((100% / 3) - 10px);
+  }
+
+  label:nth-of-type(2n+2) {
+    margin: 15px 0px;
+  }
+
+  label:nth-of-type(3n+2) {
+    margin: 15px 10px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -854,6 +876,18 @@ footer ul.flexContainer li:nth-child(2) {
   /* Gallery */
   .filterButtonContainer {
     justify-content: space-between;
+  }
+
+  label {
+    width: calc((100% / 2) - 10px);
+  }
+
+  label:nth-of-type(3n+2) {
+    margin: 0;
+  }
+
+  label:nth-of-type(2n+2) {
+    margin: 15px 0px 15px 10px;
   }
 
   .productFilter {

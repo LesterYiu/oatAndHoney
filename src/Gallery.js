@@ -59,6 +59,7 @@ const Gallery = (props) => {
             setIsCurrencyShow(!isCurrencyShown);
         }
     }
+    // <i className="fa-solid fa-caret-up" aria-hidden="true"></i>
 
     return (
         <main>
@@ -68,11 +69,11 @@ const Gallery = (props) => {
                     <div className="filterButtonContainer">
                         <button onClick={handleCurrencyClick} className="productFilter">
                             <p>Currency</p>
-                            <i className="fa-solid fa-caret-down" aria-hidden="true"></i>
+                            { isCurrencyShown ? <i className="fa-solid fa-caret-up" aria-hidden="true"></i> : <i className="fa-solid fa-caret-down" aria-hidden="true"></i> }
                         </button>
                         <button onClick={handleProductClick} className="productFilter productButtonTwo">
                             <p>Product Type</p>
-                            <i className="fa-solid fa-caret-down" aria-hidden="true"></i>
+                            { isProductListShown ? <i className="fa-solid fa-caret-up" aria-hidden="true"></i> : <i className="fa-solid fa-caret-down" aria-hidden="true"></i> }
                         </button>
                     </div>
                     {
