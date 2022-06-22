@@ -43,7 +43,8 @@ function App() {
       method: "GET",
       params: {
         api_key: "l227pbb94xqk5gj4mfg9ayva",
-        includes: "Images, Shop"
+        includes: "Images, Shop",
+        limit: 45
       }
     }).then( (apiData) => {
       setProductCollection(apiData.data.results);
