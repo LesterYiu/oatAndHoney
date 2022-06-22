@@ -56,6 +56,7 @@ const Cart = (props) => {
         const totalPriceArray = [];
 
         itemList.forEach( (item) => {
+                console.log(item.name[0].price);
             totalPriceArray.push(item.name[0].price);
         })
 
@@ -90,7 +91,7 @@ const Cart = (props) => {
                                 <div className="cartItemInfo">
                                     <div className="cartItemText">
                                         <p>{item.name[0].title}</p>
-                                        <p>{cartCurrencySymbol} { currencyChoice === 'JPY' || currencyChoice === 'KRW' ? Math.round(item.name[0].price * cartCurrency) : (item.name[0].price * cartCurrency).toFixed(2)} {currencyChoice}</p>
+                                        <p className="cartItemCurrency">{cartCurrencySymbol} { currencyChoice === 'JPY' || currencyChoice === 'KRW' ? Math.round(item.name[0].price * cartCurrency) : (item.name[0].price * cartCurrency).toFixed(2)} {currencyChoice}</p>
                                     </div>
                                     <button onClick={() => {handleRemove(item.key)}}>
                                         <i className="fa-solid fa-trash"></i>  Remove Item
@@ -101,7 +102,7 @@ const Cart = (props) => {
                     })
                 }
                 <div className="cartCheckout">
-                    <p>Your total: {cartCurrencySymbol} { currencyChoice === "JPY" || currencyChoice === "KRW" ? Math.round(cartTotal * cartCurrency) : (cartTotal * cartCurrency).toFixed(2)} {currencyChoice}</p>
+                    <p className="cartTotal">Your total: {cartCurrencySymbol} { currencyChoice === "JPY" || currencyChoice === "KRW" ? Math.round(cartTotal * cartCurrency) : (cartTotal * cartCurrency).toFixed(2)} {currencyChoice}</p>
                     <a href="https://www.etsy.com/ca/shop/JnLNaturals" target="_blank" rel="noreferrer" className="buyNow">buy now</a>
                 </div>
             </div>

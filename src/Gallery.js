@@ -6,20 +6,10 @@ import axios from 'axios';
 
 const Gallery = (props) => {
 
-    /*
-    PSEUDO CODE
-
-    1. Create a modal that will open when an item is clicked, containing information about the item, item description, price, ETC.
-
-    2. Once the item is clicked ( the item is setting state ), the modal will populate the new data.
-
-    */
-
-    const {productCollection, currencyChoice, setCustomerCart, setCurrencyChoice} = props;
+    const {productCollection, currencyChoice, setCustomerCart, setCurrencyChoice, setExchangeRate, exchangeRate, currencySymbol, setCurrencySymbol} = props;
     const [userInput, setUserInput] = useState('');    
     const [filteredCollection, setFilteredCollection] = useState([]);
-    const [currencySymbol, setCurrencySymbol] = useState('$');
-    const [exchangeRate, setExchangeRate] = useState(1);
+    // const [exchangeRate, setExchangeRate] = useState(1);
     const [isCurrencyShown, setIsCurrencyShow] = useState(false);
     const [isProductListShown, setIsProductListShown] = useState(false);
 
@@ -54,7 +44,7 @@ const Gallery = (props) => {
         }).then( (dataResponse) => {
             setCurrencySymbol((dataResponse.data[currencyChoice].symbol).replace(/[a-z]/gi, ''));
         });
-    }, [currencyChoice])
+    }, [currencyChoice, setCurrencySymbol])
 
     const handleCurrencyClick = () => {
         setIsCurrencyShow(!isCurrencyShown);

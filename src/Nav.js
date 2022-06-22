@@ -1,4 +1,5 @@
 import honeyIcon from './honeyIcon.png';
+import { Link } from 'react-router-dom';
 
 const Nav = (props) => {
     const {setIsCartClicked, isCartClicked, itemList} = props;
@@ -9,10 +10,12 @@ const Nav = (props) => {
             <div className="wrapper">
                 <ul className="flexContainer">
                     <li>
-                        <span className="flexContainer">
-                            <img src={honeyIcon} alt="" className="honeyIcon"/>
-                            <p className='logo'> <span aria-hidden="true" className="logoDivider">|</span> Oat & Honey</p>
-                        </span>
+                        <Link to="/">
+                            <span className="flexContainer">
+                                <img src={honeyIcon} alt="" className="honeyIcon"/>
+                                <p className='logo'> <span aria-hidden="true" className="logoDivider">|</span> Oat & Honey</p>
+                            </span>
+                        </Link>
                     </li>
                     <li className='shoppingContainer'>
                         <div className='cartContainer'>

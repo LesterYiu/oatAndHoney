@@ -30,6 +30,12 @@ function App() {
   // Cart Button
   const [isCartClicked, setIsCartClicked] = useState(false);
 
+  // Currency
+  const [exchangeRate, setExchangeRate] = useState(1);
+
+  // Currency Symbol
+  const [currencySymbol, setCurrencySymbol] = useState('$');
+
   useEffect(() => {
     axios({
       url: 'https://powerful-peak-98750.herokuapp.com/https://openapi.etsy.com/v2/shops/18372328/listings/active/',
@@ -66,11 +72,18 @@ function App() {
           <Nav setIsCartClicked={setIsCartClicked} isCartClicked={isCartClicked} itemList={itemList}/>
           <Header/>
           {isCartClicked ? <FocusLock><Cart itemList={itemList} setItemList={setItemList} currencyChoice={currencyChoice} setIsCartClicked={setIsCartClicked}/></FocusLock> : false}
-          <Gallery productCollection={productCollection} currencyChoice={currencyChoice} setCustomerCart={setCustomerCart} setCurrencyChoice={setCurrencyChoice}/>
+          <Gallery productCollection={productCollection} currencyChoice={currencyChoice} setCustomerCart={setCustomerCart} setCurrencyChoice={setCurrencyChoice} exchangeRate={exchangeRate} setExchangeRate={setExchangeRate} currencySymbol={currencySymbol} setCurrencySymbol={setCurrencySymbol}/>
           <Footer/>
         </>
-      }></Route>
-      <Route path="/product/:itemID" element={<ItemModal/>}/>
+      }>
+      </Route>
+      <Route path="/product/:itemID" element={
+        <>
+        <Nav setIsCartClicked={setIsCartClicked} isCartClicked={isCartClicked} itemList={itemList}/>
+        <ItemModal exchangeRate={exchangeRate} currencyChoice={currencyChoice} currencySymbol={currencySymbol} setCustomerCart={setCustomerCart}/>
+        <Footer/>
+        </>
+      }/>
     </Routes>
   );
 }
