@@ -80,6 +80,7 @@ function App() {
       <Route path="/product/:itemID" element={
         <>
         <Nav setIsCartClicked={setIsCartClicked} isCartClicked={isCartClicked} itemList={itemList}/>
+        {isCartClicked ? <FocusLock><Cart itemList={itemList} setItemList={setItemList} currencyChoice={currencyChoice} setIsCartClicked={setIsCartClicked}/></FocusLock> : false}
         <ItemModal exchangeRate={exchangeRate} currencyChoice={currencyChoice} currencySymbol={currencySymbol} setCustomerCart={setCustomerCart}/>
         <Footer/>
         </>
