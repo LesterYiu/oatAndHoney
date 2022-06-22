@@ -9,7 +9,6 @@ const Gallery = (props) => {
     const {productCollection, currencyChoice, setCustomerCart, setCurrencyChoice, setExchangeRate, exchangeRate, currencySymbol, setCurrencySymbol} = props;
     const [userInput, setUserInput] = useState("");    
     const [filteredCollection, setFilteredCollection] = useState([]);
-    // const [exchangeRate, setExchangeRate] = useState(1);
     const [isCurrencyShown, setIsCurrencyShow] = useState(false);
     const [isProductListShown, setIsProductListShown] = useState(false);
 
@@ -59,7 +58,6 @@ const Gallery = (props) => {
             setIsCurrencyShow(!isCurrencyShown);
         }
     }
-    // <i className="fa-solid fa-caret-up" aria-hidden="true"></i>
 
     return (
         <main>
