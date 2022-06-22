@@ -879,15 +879,15 @@ footer ul.flexContainer li:nth-child(2) {
   }
 
   label {
-    width: calc((100% / 2) - 10px);
+    width: 100%;
   }
 
   label:nth-of-type(3n+2) {
-    margin: 0;
+    margin: 15px 0;
   }
 
   label:nth-of-type(2n+2) {
-    margin: 15px 0px 15px 10px;
+    margin: 15px 0;
   }
 
   .productFilter {
