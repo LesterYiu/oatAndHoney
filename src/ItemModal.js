@@ -55,6 +55,7 @@ const ItemModal = (props) => {
                                     <p className="modalPrice">{currencySymbol} {currencyChoice === "JPY" || currencyChoice === "KRW" ? Math.round(item.price * exchangeRate) : (item.price * exchangeRate).toFixed(2)} {currencyChoice}</p>
                                     <h3 onClick={() => {setIsInfoClicked(!isInfoClicked)}}>Ingredients
                                         <button aria-label="see description">
+                                            <span className="sr-only">read ingredients list</span>
                                             {isInfoClicked ? <i className="fa-solid fa-minus ingredientIcon"></i> : <i className="fa-solid fa-plus ingredientIcon" aria-hidden="true"></i>}
                                         </button>
                                     </h3>
