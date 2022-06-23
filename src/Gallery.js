@@ -60,13 +60,13 @@ const Gallery = (props) => {
     }
 
     return (
-        <main>
+        <main role="main">
             <section className="gallery" id="gallerySection">
                 <div className="wrapper">
                     <h2>Our Products</h2>
                     <div className="filterButtonContainer">
                         <button onClick={handleCurrencyClick} className="productFilter">
-                            <p>Currency</p>
+                            <p>Change Currency</p>
                             { isCurrencyShown ? <i className="fa-solid fa-caret-up" aria-hidden="true"></i> : <i className="fa-solid fa-caret-down" aria-hidden="true"></i> }
                         </button>
                         <button onClick={handleProductClick} className="productFilter productButtonTwo">

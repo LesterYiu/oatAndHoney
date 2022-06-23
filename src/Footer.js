@@ -1,6 +1,6 @@
 const Footer = () => {
     return(
-        <footer>
+        <footer role="contentinfo">
             <div className="wrapper">
                 <div className="flexContainer">
                     <ul className="footerContact">

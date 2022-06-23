@@ -77,7 +77,7 @@ const Cart = (props) => {
                 <h2>Your Cart</h2>
                 <p>{itemList.length} item(s)</p>
             </div>
-            <button className="exitCart" onClick={handleExitClick} onKeyPress={handleCartExitKey}>
+            <button className="exitCart" onClick={handleExitClick} onKeyPress={handleCartExitKey}aria-label="exit cart menu">
                 <i className="fa-solid fa-xmark" aria-hidden="true"></i>
             </button>
             <div className="cartWrapper">

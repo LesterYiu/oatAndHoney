@@ -2,7 +2,7 @@ import headerImage from './headerStockImage.png';
 
 const Header = () => {
     return(
-        <header>
+        <header role="banner">
             <div className="flexContainer">
                 <div className="headerIconContainer">
                     <div className="headerProducts">
