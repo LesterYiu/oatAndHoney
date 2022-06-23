@@ -5,7 +5,7 @@ const Nav = (props) => {
     const {setIsCartClicked, isCartClicked, itemList} = props;
 
     return(
-        <nav>
+        <nav role="navigation">
             <a href="#gallerySection" className="skipToMain">Skip to Main</a>
             <div className="wrapper">
                 <ul className="flexContainer">
@@ -18,7 +18,7 @@ const Nav = (props) => {
                         </Link>
                     </li>
                     <li className="shoppingContainer">
-                        <div className="cartContainer">
+                        <div className="cartContainer" aria-label="open cart menu">
                             <button className="cartButton" onClick={() => {setIsCartClicked(!isCartClicked)}}>
                                 <i className="fa-solid fa-cart-shopping shoppingCart" aria-hidden="true"></i>
                             </button>
