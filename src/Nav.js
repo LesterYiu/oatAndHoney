@@ -20,6 +20,7 @@ const Nav = (props) => {
                     <li className="shoppingContainer">
                         <div className="cartContainer" aria-label="open cart menu">
                             <button className="cartButton" onClick={() => {setIsCartClicked(!isCartClicked)}}>
+                                <span className="sr-only">open cart menu</span>
                                 <i className="fa-solid fa-cart-shopping shoppingCart" aria-hidden="true"></i>
                             </button>
                             <span className="cartNumber">{itemList.length}</span>
