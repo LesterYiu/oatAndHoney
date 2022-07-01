@@ -936,4 +936,10 @@ footer ul.flexContainer li:nth-child(2) {
   .cartMenu {
     width: 75%;
   }
+
+  /* Footer */
+
+  address {
+    text-align: center;
+  }
 }
