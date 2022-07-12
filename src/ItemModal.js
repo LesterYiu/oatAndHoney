@@ -4,10 +4,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const ItemModal = (props) => {
+
     const {exchangeRate, currencyChoice, currencySymbol, setCustomerCart} = props;
     const { itemID } = useParams();
     const [singleItem, setSingleItem] = useState([]);
     const [isInfoClicked, setIsInfoClicked] = useState(false);
+    console.log(itemID);
 
     const storeUserSelection = () => {
 

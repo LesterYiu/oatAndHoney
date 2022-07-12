@@ -81,11 +81,17 @@ const Gallery = (props) => {
                         isProductListShown ? <Form setUserInput={setUserInput}/> : null
                     }
                     <div className="flexContainer">
-                        { filteredCollection.map( (product) => {
-                            return (
-                                <Item image={product.Images[0].url_fullxfull} key={product.listing_id} itemId={product.listing_id} title={product.title} price={product.price} description={product.materials} currencyChoice={currencyChoice} exchangeRate={exchangeRate} currencySymbol={currencySymbol} setCustomerCart={setCustomerCart}/>
-                            )
-                        })}
+                        {filteredCollection.length === 0 ? 
+                        <div className="loading">
+                            <p>Loading</p>
+                            <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                        </div> : 
+                            filteredCollection.map( (product) => {
+                                return (
+                                    <Item image={product.Images[0].url_fullxfull} key={product.listing_id} itemId={product.listing_id} title={product.title} price={product.price} description={product.materials} currencyChoice={currencyChoice} exchangeRate={exchangeRate} currencySymbol={currencySymbol} setCustomerCart={setCustomerCart}/>
+                                )
+                            })
+                        }
                     </div>
                 </div>
             </section>
