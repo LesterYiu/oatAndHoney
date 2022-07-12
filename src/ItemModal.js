@@ -9,7 +9,6 @@ const ItemModal = (props) => {
     const { itemID } = useParams();
     const [singleItem, setSingleItem] = useState([]);
     const [isInfoClicked, setIsInfoClicked] = useState(false);
-    console.log(itemID);
 
     const storeUserSelection = () => {
 
@@ -48,6 +47,11 @@ const ItemModal = (props) => {
                     <i className="fa-solid fa-arrow-left exitArrow" aria-hidden="true"></i>
                 </Link>
                 {
+                    singleItem.length === 0 ? 
+                    <div className="loading">
+                        <p>Loading</p>
+                        <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                    </div> :
                     singleItem.map( (item) => {
                         return(
                             <div key={uuid()} className="flexContainer">
@@ -55,6 +59,7 @@ const ItemModal = (props) => {
                                     <h2>{item.title}</h2>
                                     <p className="productId">Item ID: {item.listing_id}</p>
                                     <p className="modalPrice">{currencySymbol} {currencyChoice === "JPY" || currencyChoice === "KRW" ? Math.round(item.price * exchangeRate) : (item.price * exchangeRate).toFixed(2)} {currencyChoice}</p>
+                                    <button className="modalBuyButton" onClick={storeUserSelection}>Add to Cart</button>
                                     <h3 onClick={() => {setIsInfoClicked(!isInfoClicked)}}>Ingredients
                                         <button aria-label="see description">
                                             <span className="sr-only">read ingredients list</span>
@@ -68,7 +73,6 @@ const ItemModal = (props) => {
                                             })}
                                         </ul> : null
                                     }
-                                    <button className="modalBuyButton" onClick={storeUserSelection}>Add to Cart</button>
                                 </div> 
                                 <div className="modalImageContainer" key={uuid()}>
                                     <img src={item.Images[0].url_fullxfull} alt={item.title} />
