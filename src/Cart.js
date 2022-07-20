@@ -56,7 +56,6 @@ const Cart = (props) => {
         const totalPriceArray = [];
 
         itemList.forEach( (item) => {
-                console.log(item.name[0].price);
             totalPriceArray.push(item.name[0].price);
         })
 
