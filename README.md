@@ -25,13 +25,7 @@ Oat & Honey is a self-care e-commerce website created using React and Firebase. 
 - [UUID](https://www.npmjs.com/package/uuid)
 - [React Router DOM](https://www.npmjs.com/package/react-router-dom)
 - [React Focus Lock](https://www.npmjs.com/package/react-focus-lock)
-## Tech Stack
 
-- HTML5
-- CSS3
-- JavaScript
-- React
-- Firebase (Realtime Database)
 ## Setup
 
 Clone the project
