@@ -116,29 +116,18 @@ const Cart = (props) => {
     }    
 
     // Adds one item to the cart
-    const handleAdd = (itemId) => {
-        axios({
-            url: `https://powerful-peak-98750.herokuapp.com/https://openapi.etsy.com/v2/listings/${itemId}`,
-            dataResponse: "json",
-            method: "GET",
-            params: {
-                api_key: "l227pbb94xqk5gj4mfg9ayva",
-                includes: "Images, Shop"
-            }
-        }).then((response) => {
-            const results = response.data.results;
-            const userSelection = [];
-            userSelection.push({
-                image: results[0].Images[0].url_fullxfull,
-                title: results[0].title,
-                price: parseFloat(results[0].price),
-                exchangeRate: exchangeRate,
-                currencyChoice: currencyChoice,
-                itemId: itemId,
-                currencySymbol: cartCurrencySymbol,
-            })
-            setCustomerCart(userSelection);
+    const handleAdd = (item) => {
+        const userSelection = [];
+        userSelection.push({
+            image: item.image,
+            title: item.title,
+            price: item.price,
+            exchangeRate: exchangeRate,
+            currencyChoice: currencyChoice,
+            itemId: item.itemId,
+            currencySymbol: cartCurrencySymbol
         })
+        setCustomerCart(userSelection)
     }
 
     // Exits out of the cart modal
@@ -193,7 +182,7 @@ const Cart = (props) => {
                                                 </i>
                                             </button>
                                             <span>{item.count}</span>
-                                            <button onClick={() => {handleAdd(item.itemId)}}>
+                                            <button onClick={() => {handleAdd(item)}}>
                                                 <i className="fa-solid fa-plus cartIcons">
                                                     <span className="sr-only">add one item</span>
                                                 </i>
