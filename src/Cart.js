@@ -5,10 +5,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const Cart = (props) => {
-    const {itemList, setItemList, currencyChoice, setIsCartClicked, exchangeRate} = props;
+    const {itemList, setItemList, currencyChoice, setIsCartClicked, exchangeRate, setCustomerCart} = props;
     const [cartCurrency, setCartCurrency] = useState(1);
     const [cartCurrencySymbol, setCartCurrencySymbol] = useState("$");
     const [cartTotal, setCartTotal] = useState(0);
+
     // Final Restructured Data using Firebase information
     const [finalArrList, setFinalArrList] = useState([]);
 
@@ -64,7 +65,6 @@ const Cart = (props) => {
                     price: [i][0].name[0].price,
                     key: i.key
                 };
-                // count[element][i.key] = i.key;
             }
         })
 
@@ -93,6 +93,31 @@ const Cart = (props) => {
         })
     }
 
+    const handleAdd = (itemId) => {
+        axios({
+            url: `https://powerful-peak-98750.herokuapp.com/https://openapi.etsy.com/v2/listings/${itemId}`,
+            dataResponse: "json",
+            method: "GET",
+            params: {
+                api_key: "l227pbb94xqk5gj4mfg9ayva",
+                includes: "Images, Shop"
+            }
+        }).then((response) => {
+            const results = response.data.results;
+            const userSelection = [];
+            userSelection.push({
+                image: results[0].Images[0].url_fullxfull,
+                title: results[0].title,
+                price: parseFloat(results[0].price),
+                exchangeRate: exchangeRate,
+                currencyChoice: currencyChoice,
+                itemId: itemId,
+                currencySymbol: cartCurrencySymbol,
+            })
+            setCustomerCart(userSelection);
+        })
+    }
+
     const handleExitClick = () => {
         setIsCartClicked(false);
     }
@@ -114,7 +139,6 @@ const Cart = (props) => {
             handleExitClick();
         }
     }
-    console.log(finalArrList);
 
     return(
         <div className="cartMenu">  
@@ -137,11 +161,11 @@ const Cart = (props) => {
                                     <div className="cartItemText">
                                         <p>{item.title}</p>
                                         <p className="cartQuantity">
-                                            <i className="fa-solid fa-minus" onClick={() => {handleRemove(item.key)}}>
+                                            <i className="fa-solid fa-minus cartIcons" onClick={() => {handleRemove(item.key)}}>
                                                 <span className="sr-only">remove one item</span>
                                             </i>
                                             <span>{item.count}</span>
-                                            <i className="fa-solid fa-plus">
+                                            <i className="fa-solid fa-plus cartIcons" onClick={() => {handleAdd(item.itemId)}}>
                                                 <span className="sr-only">add one item</span>
                                             </i>
                                         </p>

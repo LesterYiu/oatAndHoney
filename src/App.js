@@ -65,6 +65,7 @@ function App() {
       setItemList(newState);
     })
   }, [customerCart])
+
   return (
     <Routes>
       <Route path="/" element={
@@ -72,7 +73,7 @@ function App() {
           {isCartClicked ? <div className="coverPage"></div> : null}
           <Nav setIsCartClicked={setIsCartClicked} isCartClicked={isCartClicked} itemList={itemList}/>
           <Header/>
-          {isCartClicked ? <FocusLock><Cart itemList={itemList} setItemList={setItemList} currencyChoice={currencyChoice} setIsCartClicked={setIsCartClicked} exchangeRate={exchangeRate}/></FocusLock> : false}
+          {isCartClicked ? <FocusLock><Cart itemList={itemList} setItemList={setItemList} currencyChoice={currencyChoice} setIsCartClicked={setIsCartClicked} exchangeRate={exchangeRate} setCustomerCart={setCustomerCart} /></FocusLock> : false}
           <Gallery productCollection={productCollection} currencyChoice={currencyChoice} setCustomerCart={setCustomerCart} setCurrencyChoice={setCurrencyChoice} exchangeRate={exchangeRate} setExchangeRate={setExchangeRate} currencySymbol={currencySymbol} setCurrencySymbol={setCurrencySymbol}/>
           <Footer/>
         </>
@@ -81,7 +82,7 @@ function App() {
       <Route path="/product/:itemID" element={
         <>
         <Nav setIsCartClicked={setIsCartClicked} isCartClicked={isCartClicked} itemList={itemList}/>
-        {isCartClicked ? <FocusLock><Cart itemList={itemList} setItemList={setItemList} currencyChoice={currencyChoice} setIsCartClicked={setIsCartClicked}/></FocusLock> : false}
+        {isCartClicked ? <FocusLock><Cart itemList={itemList} setItemList={setItemList} currencyChoice={currencyChoice} setIsCartClicked={setIsCartClicked} setCustomerCart={setCustomerCart} /></FocusLock> : false}
         <ItemModal exchangeRate={exchangeRate} currencyChoice={currencyChoice} currencySymbol={currencySymbol} setCustomerCart={setCustomerCart}/>
         <Footer/>
         </>
