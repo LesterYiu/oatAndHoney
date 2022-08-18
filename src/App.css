@@ -509,7 +509,15 @@ legend {
 
 .cartItemCurrency {
   font-weight: 600;
-  margin-top: 20px;
+}
+
+.cartQuantity {
+  margin: 5px 0px;
+}
+
+.cartQuantity span {
+  border-bottom: solid 1.5px black;
+  padding: 0px 15px;
 }
 
 .cartTotal {

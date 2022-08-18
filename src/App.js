@@ -72,7 +72,7 @@ function App() {
           {isCartClicked ? <div className="coverPage"></div> : null}
           <Nav setIsCartClicked={setIsCartClicked} isCartClicked={isCartClicked} itemList={itemList}/>
           <Header/>
-          {isCartClicked ? <FocusLock><Cart itemList={itemList} setItemList={setItemList} currencyChoice={currencyChoice} setIsCartClicked={setIsCartClicked}/></FocusLock> : false}
+          {isCartClicked ? <FocusLock><Cart itemList={itemList} setItemList={setItemList} currencyChoice={currencyChoice} setIsCartClicked={setIsCartClicked} exchangeRate={exchangeRate}/></FocusLock> : false}
           <Gallery productCollection={productCollection} currencyChoice={currencyChoice} setCustomerCart={setCustomerCart} setCurrencyChoice={setCurrencyChoice} exchangeRate={exchangeRate} setExchangeRate={setExchangeRate} currencySymbol={currencySymbol} setCurrencySymbol={setCurrencySymbol}/>
           <Footer/>
         </>

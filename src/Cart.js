@@ -5,10 +5,12 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const Cart = (props) => {
-    const {itemList, setItemList, currencyChoice, setIsCartClicked} = props;
+    const {itemList, setItemList, currencyChoice, setIsCartClicked, exchangeRate} = props;
     const [cartCurrency, setCartCurrency] = useState(1);
     const [cartCurrencySymbol, setCartCurrencySymbol] = useState("$");
     const [cartTotal, setCartTotal] = useState(0);
+    // Final Restructured Data using Firebase information
+    const [finalArrList, setFinalArrList] = useState([]);
 
     useEffect( () => {
         axios({
@@ -33,6 +35,48 @@ const Cart = (props) => {
         });
     }, [currencyChoice])
 
+    useEffect( () => {
+        // This counts the duplicates in the set of data containing all the items
+        const count = {};
+        itemList.forEach( (i) => {
+            const element = i.name[0].title;
+            if (count[element]) {
+                count[element] = {
+                    title: element,
+                    count: count[element].count + 1,
+                    image: [i][0].name[0].image,
+                    currencyChoice: currencyChoice,
+                    currencySymbol: cartCurrencySymbol,
+                    exchangeRate: exchangeRate,
+                    itemId: [i][0].name[0].itemId,
+                    price: [i][0].name[0].price,
+                    key: i.key
+                }
+            } else {
+                count[element] = {
+                    title: element,
+                    count: 1,
+                    image: [i][0].name[0].image,
+                    currencyChoice: currencyChoice,
+                    currencySymbol: cartCurrencySymbol,
+                    exchangeRate: exchangeRate,
+                    itemId: [i][0].name[0].itemId,
+                    price: [i][0].name[0].price,
+                    key: i.key
+                };
+                // count[element][i.key] = i.key;
+            }
+        })
+
+        const finalArrItems = [];
+
+        for (let i in count) {
+            finalArrItems.push(count[i]);
+        }
+
+        setFinalArrList(finalArrItems);
+    }, [itemList, currencyChoice, cartCurrencySymbol, exchangeRate])
+
     const handleRemove = (itemId) => {
         const database = getDatabase(firebase);
         const dbRef = ref(database, `${itemId}`);
@@ -48,6 +92,7 @@ const Cart = (props) => {
             setItemList(newState);
         })
     }
+
     const handleExitClick = () => {
         setIsCartClicked(false);
     }
@@ -69,6 +114,7 @@ const Cart = (props) => {
             handleExitClick();
         }
     }
+    console.log(finalArrList);
 
     return(
         <div className="cartMenu">  
@@ -81,16 +127,25 @@ const Cart = (props) => {
             </button>
             <div className="cartWrapper">
                 {
-                    itemList.map( (item) => {
+                    finalArrList.map( (item) => {
                         return (
                             <div className="cartItemContainer" key={uuid()} id={uuid()}>
                                 <div className="cartItemImageContainer">
-                                    <img src={item.name[0].image} alt={item.name[0].title} />
+                                    <img src={item.image} alt={item.title} />
                                 </div>
                                 <div className="cartItemInfo">
                                     <div className="cartItemText">
-                                        <p>{item.name[0].title}</p>
-                                        <p className="cartItemCurrency">{cartCurrencySymbol} { currencyChoice === "JPY" || currencyChoice === "KRW" ? Math.round(item.name[0].price * cartCurrency) : (item.name[0].price * cartCurrency).toFixed(2)} {currencyChoice}</p>
+                                        <p>{item.title}</p>
+                                        <p className="cartQuantity">
+                                            <i className="fa-solid fa-minus" onClick={() => {handleRemove(item.key)}}>
+                                                <span className="sr-only">remove one item</span>
+                                            </i>
+                                            <span>{item.count}</span>
+                                            <i className="fa-solid fa-plus">
+                                                <span className="sr-only">add one item</span>
+                                            </i>
+                                        </p>
+                                        <p className="cartItemCurrency">{cartCurrencySymbol} { currencyChoice === "JPY" || currencyChoice === "KRW" ? Math.round(item.price * item.count * cartCurrency) : (item.price * cartCurrency * item.count).toFixed(2)} {currencyChoice}</p>
                                     </div>
                                     <button onClick={() => {handleRemove(item.key)}}>
                                         <i className="fa-solid fa-trash"></i>  Remove Item
