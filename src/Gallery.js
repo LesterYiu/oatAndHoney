@@ -7,6 +7,7 @@ import axios from "axios";
 const Gallery = (props) => {
 
     const {productCollection, currencyChoice, setCustomerCart, setCurrencyChoice, setExchangeRate, exchangeRate, currencySymbol, setCurrencySymbol} = props;
+
     const [userInput, setUserInput] = useState("");    
     const [filteredCollection, setFilteredCollection] = useState([]);
     const [isCurrencyShown, setIsCurrencyShow] = useState(false);

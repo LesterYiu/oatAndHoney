@@ -93,6 +93,12 @@ const Cart = (props) => {
         })
     }
 
+    // const handleRemoveAll = (item, itemId) => {
+    //     for(let i = 0; i < item.count; i++) {
+    //         handleRemove(itemId)
+    //     }
+    // }
+
     const handleAdd = (itemId) => {
         axios({
             url: `https://powerful-peak-98750.herokuapp.com/https://openapi.etsy.com/v2/listings/${itemId}`,
