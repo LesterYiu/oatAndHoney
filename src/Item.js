@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 
 const Item = (props) => {
+
     const {image, title, price, exchangeRate, currencyChoice, currencySymbol, setCustomerCart, itemId} = props;
 
+    // Updates the cart by adding 1 to cart, triggering the async firebase js
     const storeUserSelection = () => {
 
         const userSelection = [];

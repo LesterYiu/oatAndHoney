@@ -6,8 +6,14 @@ import { useEffect, useState } from "react";
 const ItemModal = (props) => {
 
     const {exchangeRate, currencyChoice, currencySymbol, setCustomerCart} = props;
+
+    // Uses the itemID of the product to search through the API data
     const { itemID } = useParams();
+
+    // The API results for the singular item corresponding to the item ID
     const [singleItem, setSingleItem] = useState([]);
+
+    // Populates the info dropdown menu
     const [isInfoClicked, setIsInfoClicked] = useState(false);
 
     const storeUserSelection = () => {

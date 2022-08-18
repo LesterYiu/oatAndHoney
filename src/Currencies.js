@@ -2,6 +2,8 @@ import {useState} from "react";
 
 const Currencies = (props) => {
     const {setCurrencyChoice} = props;
+
+    // Check to see if the selected currency has been selected
     const [checkUSD, setCheckUSD] = useState(false);
     const [checkCAD, setCheckCAD] = useState(false);
     const [checkEUR, setCheckEUR] = useState(false);
@@ -11,9 +13,12 @@ const Currencies = (props) => {
     const [checkHKD, setCheckHKD] = useState(false);
     const [checkKRW, setCheckKRW] = useState(false);
 
+    // Updates the whole currency on the store
     const handleCurrencyClick = (e) => {
         setCurrencyChoice(e.target.value);
     }
+
+    // Unchecks all currency selections
     const setAllInput = () => {
         setCheckUSD(false);
         setCheckCAD(false);
@@ -25,6 +30,7 @@ const Currencies = (props) => {
         setCheckKRW(false);
     }
 
+    // Unchecks all inputs and checks new currency input
     const handleCurrency = (setCheckCurrency, currency) => {
         setAllInput();
         setCheckCurrency(!currency);

@@ -3,6 +3,8 @@ import {useState} from 'react';
 const Form = (props) => {
 
     const {setUserInput} = props;
+
+    // Checkboxs for all product inputs
     const [checkAllProducts, setCheckAllProducts] = useState(false);
     const [checkPersonal, setCheckPersonal] = useState(false);
     const [checkShaving, setCheckShaving] = useState(false);
@@ -11,6 +13,7 @@ const Form = (props) => {
     const [checkHairCare, setCheckHairCare] = useState(false);
     const [checkDeodorant, setCheckDeodorant] = useState(false);
 
+    // Unchecks all the product inputs
     const setAllInput = () => {
         setCheckAllProducts(false);
         setCheckPersonal(false);
@@ -21,14 +24,18 @@ const Form = (props) => {
         setCheckDeodorant(false);
     }
 
+    // Sets product input
     const handleUserChoice = (e) => {
         setUserInput(e.target.value);
     }
 
+    // Sets new product input
     const handleProductChoice = (setCheckProduct, checkProduct) => {
         setAllInput();
         setCheckProduct(!checkProduct);
     }
+
+    // Keyboard accessibility for new product input
     const handleKeyPress = (e, handleFunction) => {
         if (e.code === 'Enter') {
             setAllInput();

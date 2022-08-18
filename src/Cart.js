@@ -6,13 +6,20 @@ import axios from "axios";
 
 const Cart = (props) => {
     const {itemList, setItemList, currencyChoice, setIsCartClicked, exchangeRate, setCustomerCart} = props;
+
+    //  Sets the cart currency 
     const [cartCurrency, setCartCurrency] = useState(1);
+
+    //  Sets the cart currency symbol
     const [cartCurrencySymbol, setCartCurrencySymbol] = useState("$");
+
+    //  Sets the final cart total price
     const [cartTotal, setCartTotal] = useState(0);
 
     // Final Restructured Data using Firebase information
     const [finalArrList, setFinalArrList] = useState([]);
 
+    // When the currency input changes, it will make an API call to retrieve newly updated currency exchange rates
     useEffect( () => {
         axios({
             url: "https://api.vatcomply.com/rates?base=USD",
@@ -26,6 +33,7 @@ const Cart = (props) => {
         })
     }, [currencyChoice])
 
+    // This will grab the currency symbol according to the currency choic
     useEffect( () => {
         axios({
             url: "https://api.vatcomply.com/currencies",
@@ -36,8 +44,8 @@ const Cart = (props) => {
         });
     }, [currencyChoice])
 
+    // This counts the duplicates in the set of data containing all the items
     useEffect( () => {
-        // This counts the duplicates in the set of data containing all the items
         const count = {};
         itemList.forEach( (i) => {
             const element = i.name[0].title;
@@ -77,6 +85,7 @@ const Cart = (props) => {
         setFinalArrList(finalArrItems);
     }, [itemList, currencyChoice, cartCurrencySymbol, exchangeRate])
 
+    // Removes 1 item from the cart
     const handleRemove = (itemId) => {
         const database = getDatabase(firebase);
         const dbRef = ref(database, `${itemId}`);
@@ -93,12 +102,20 @@ const Cart = (props) => {
         })
     }
 
-    // const handleRemoveAll = (item, itemId) => {
-    //     for(let i = 0; i < item.count; i++) {
-    //         handleRemove(itemId)
-    //     }
-    // }
+    // Removes all of a specific item from the cart
+    const handleRemoveAll = (item) => {
+        const keyArr = [];
+        for(let i = 0; i < itemList.length; i++) {
+            if (item.title === itemList[i].name[0].title) {
+                keyArr.push(itemList[i].key);
+            }
+        }
+        for(let i in keyArr) {
+            handleRemove(keyArr[i]);
+        }
+    }    
 
+    // Adds one item to the cart
     const handleAdd = (itemId) => {
         axios({
             url: `https://powerful-peak-98750.herokuapp.com/https://openapi.etsy.com/v2/listings/${itemId}`,
@@ -124,10 +141,12 @@ const Cart = (props) => {
         })
     }
 
+    // Exits out of the cart modal
     const handleExitClick = () => {
         setIsCartClicked(false);
     }
 
+    // Calculates total cart price
     useEffect( () => {
         const totalPriceArray = [];
 
@@ -140,6 +159,7 @@ const Cart = (props) => {
 
     }, [itemList]);
 
+    // Keyboard accessibility for leaving cart modal
     const handleCartExitKey = (e) => {
         if (e.code === "Enter") {
             handleExitClick();
@@ -167,17 +187,21 @@ const Cart = (props) => {
                                     <div className="cartItemText">
                                         <p>{item.title}</p>
                                         <p className="cartQuantity">
-                                            <i className="fa-solid fa-minus cartIcons" onClick={() => {handleRemove(item.key)}}>
-                                                <span className="sr-only">remove one item</span>
-                                            </i>
+                                            <button onClick={() => {handleRemove(item.key)}}>
+                                                <i className="fa-solid fa-minus cartIcons">
+                                                    <span className="sr-only">remove one item</span>
+                                                </i>
+                                            </button>
                                             <span>{item.count}</span>
-                                            <i className="fa-solid fa-plus cartIcons" onClick={() => {handleAdd(item.itemId)}}>
-                                                <span className="sr-only">add one item</span>
-                                            </i>
+                                            <button onClick={() => {handleAdd(item.itemId)}}>
+                                                <i className="fa-solid fa-plus cartIcons">
+                                                    <span className="sr-only">add one item</span>
+                                                </i>
+                                            </button>
                                         </p>
                                         <p className="cartItemCurrency">{cartCurrencySymbol} { currencyChoice === "JPY" || currencyChoice === "KRW" ? Math.round(item.price * item.count * cartCurrency) : (item.price * cartCurrency * item.count).toFixed(2)} {currencyChoice}</p>
                                     </div>
-                                    <button onClick={() => {handleRemove(item.key)}}>
+                                    <button onClick={() => {handleRemoveAll(item)}}>
                                         <i className="fa-solid fa-trash"></i>  Remove Item
                                     </button>
                                 </div>

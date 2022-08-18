@@ -461,10 +461,6 @@ legend {
   background-color: #D6C49E;
 }
 
-.cartIcons {
-  cursor: pointer;
-}
-
 .exitCart {
   color: white;
   font-size: 1.8rem;
@@ -514,6 +510,7 @@ legend {
 
 .cartItemCurrency {
   font-weight: 600;
+  margin: 15px 0;
 }
 
 .cartQuantity {
@@ -523,6 +520,15 @@ legend {
 .cartQuantity span {
   border-bottom: solid 1.5px black;
   padding: 0px 15px;
+  margin: 0px 15px;
+}
+
+.cartItemInfo .cartQuantity button {
+  padding: 5px 8px;
+}
+
+.cartIcons {
+  cursor: pointer;
 }
 
 .cartTotal {

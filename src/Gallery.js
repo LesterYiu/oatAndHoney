@@ -8,11 +8,19 @@ const Gallery = (props) => {
 
     const {productCollection, currencyChoice, setCustomerCart, setCurrencyChoice, setExchangeRate, exchangeRate, currencySymbol, setCurrencySymbol} = props;
 
-    const [userInput, setUserInput] = useState("");    
+    // The user's filtered choice
+    const [userInput, setUserInput] = useState("");  
+    
+    // Filtered collection with the user's choice
     const [filteredCollection, setFilteredCollection] = useState([]);
+
+    // Currency dropdown menu
     const [isCurrencyShown, setIsCurrencyShow] = useState(false);
+
+    // Product list dropdown menu
     const [isProductListShown, setIsProductListShown] = useState(false);
 
+    // Filters the gallery according to product filter choice
     useEffect( () => {
         if(userInput) {
             setFilteredCollection(productCollection.filter ( (item) => {
@@ -23,6 +31,7 @@ const Gallery = (props) => {
         }
     }, [userInput, productCollection])
     
+    // Updates exchange rate based on currency input
     useEffect( () => {
         axios({
             url: "https://api.vatcomply.com/rates?base=USD",
@@ -36,6 +45,7 @@ const Gallery = (props) => {
         })
     }, [currencyChoice, setExchangeRate])
 
+    // Sets currency symbol based on user input
     useEffect( () => {
         axios({
             url: "https://api.vatcomply.com/currencies",
@@ -46,6 +56,7 @@ const Gallery = (props) => {
         });
     }, [currencyChoice, setCurrencySymbol])
 
+    // Dropdown for currency choice
     const handleCurrencyClick = () => {
         setIsCurrencyShow(!isCurrencyShown);
         if (isProductListShown) {
@@ -53,6 +64,7 @@ const Gallery = (props) => {
         }
     }
     
+    // Dropdown for prodcut type
     const handleProductClick = () => {
         setIsProductListShown(!isProductListShown);
         if (isCurrencyShown) {

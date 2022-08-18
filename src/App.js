@@ -36,6 +36,7 @@ function App() {
   // Currency Symbol
   const [currencySymbol, setCurrencySymbol] = useState("$");
 
+  // Populates the page with items in gallery section
   useEffect(() => {
     axios({
       url: "https://powerful-peak-98750.herokuapp.com/https://openapi.etsy.com/v2/shops/18372328/listings/active/",
@@ -51,6 +52,7 @@ function App() {
     });
   }, [])
 
+  // Adds to firebase when new item has been added to cart
   useEffect( () => {
     const database = getDatabase(firebase);
     const dbRef = ref(database);
@@ -68,6 +70,7 @@ function App() {
 
   return (
     <Routes>
+      {/* Home page */}
       <Route path="/" element={
         <>
           {isCartClicked ? <div className="coverPage"></div> : null}
@@ -79,6 +82,7 @@ function App() {
         </>
       }>
       </Route>
+      {/* Specific item page */}
       <Route path="/product/:itemID" element={
         <>
           {isCartClicked ? <div className="coverPage"></div> : null}
