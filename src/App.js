@@ -81,10 +81,11 @@ function App() {
       </Route>
       <Route path="/product/:itemID" element={
         <>
-        <Nav setIsCartClicked={setIsCartClicked} isCartClicked={isCartClicked} itemList={itemList}/>
-        {isCartClicked ? <FocusLock><Cart itemList={itemList} setItemList={setItemList} currencyChoice={currencyChoice} setIsCartClicked={setIsCartClicked} setCustomerCart={setCustomerCart} /></FocusLock> : false}
-        <ItemModal exchangeRate={exchangeRate} currencyChoice={currencyChoice} currencySymbol={currencySymbol} setCustomerCart={setCustomerCart}/>
-        <Footer/>
+          {isCartClicked ? <div className="coverPage"></div> : null}
+          <Nav setIsCartClicked={setIsCartClicked} isCartClicked={isCartClicked} itemList={itemList}/>
+          {isCartClicked ? <FocusLock><Cart itemList={itemList} setItemList={setItemList} currencyChoice={currencyChoice} setIsCartClicked={setIsCartClicked} setCustomerCart={setCustomerCart} exchangeRate={exchangeRate} /></FocusLock> : false}
+          <ItemModal exchangeRate={exchangeRate} currencyChoice={currencyChoice} currencySymbol={currencySymbol} setCustomerCart={setCustomerCart}/>
+          <Footer/>
         </>
       }/>
     </Routes>
