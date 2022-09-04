@@ -44,7 +44,13 @@ const Cart = (props) => {
         });
     }, [currencyChoice])
 
-    // This counts the duplicates in the set of data containing all the items
+    /* This counts the duplicates in the set of data containing all the items
+    
+    1. Every item object will be put into the count object as a property. If the item already exists in the count object as a property, aka a duplicate, then it will adjust the count and add 1. If it doesn't exist as a property on the count object, it will add it onto the count 
+    object.
+
+    2. All the cart items will be put into an empty array and then mapped over to display the items.
+    */
     useEffect( () => {
         const count = {};
         itemList.forEach( (i) => {
