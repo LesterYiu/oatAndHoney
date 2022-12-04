@@ -39,7 +39,7 @@ function App() {
   // Populates the page with items in gallery section
   useEffect(() => {
     axios({
-      url: "https://powerful-peak-98750.herokuapp.com/https://openapi.etsy.com/v2/shops/18372328/listings/active/",
+      url: "https://radiant-peak-12085.herokuapp.com/https://openapi.etsy.com/v2/shops/18372328/listings/active/",
       dataResponse: "json",
       method: "GET",
       params: {
